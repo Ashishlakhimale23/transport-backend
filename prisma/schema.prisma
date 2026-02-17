@@ -1,0 +1,125 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generate/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Enums (mapped to readable identifiers)
+enum UserRole {
+  admin
+  contractor
+  driver
+}
+
+enum VehicleWheel {
+  V4   @map("4")
+  V6   @map("6")
+  V10  @map("10")
+  V12  @map("12")
+}
+
+enum GoodsType {
+  HANDLE_WITH_CARE @map("handlewithcare")
+  AUTOMOBILE       @map("automobile")
+}
+
+enum VehicleCategory {
+  OPEN     @map("open")
+  SEMIOPEN @map("semiopen")
+  CONTAINER @map("container")
+}
+
+enum InsuranceType {
+  BASIC     @map("basic")
+  PRO       @map("pro")
+  MAXSAVER  @map("maxsaver")
+}
+
+// Models
+model User {
+  id                        Int       @id @default(autoincrement())
+  email                     String    @db.VarChar(100)
+  username                  String    @db.VarChar(25)
+  role                      UserRole
+  password                  String    @db.VarChar(100)
+  contact                   String
+  regularPracticeLocation   String
+  rating                    Float?
+  vechileType               VehicleType[] @relation("UserVehicles")
+  contractsCreated          Contract[] @relation("ContractorContracts")
+  contractsCarried          Contract[] @relation("GoodsCarrierContracts")
+  bids                      Bid[]
+
+  @@map("user")
+}
+
+model Contract {
+  id             Int          @id @default(autoincrement())
+  weight         Float
+  pickupDate     DateTime
+  dropDate       DateTime
+  startLocation  String       @db.VarChar(100)
+  endLocation    String       @db.VarChar(100)
+  approxKms      Int
+  contractorId   Int
+  goodsCarrierId Int? 
+  typeOfVehicle  VehicleWheel
+  insured        Boolean
+  winningPrice   Int?
+  type           GoodsType
+  createdAt      DateTime     @default(now())
+  description    String       @default("")
+  requirements   String[]     @default([])
+  contractor     User         @relation("ContractorContracts", fields: [contractorId], references: [id], onDelete: Cascade)
+  goodsCarrier   User?        @relation("GoodsCarrierContracts", fields: [goodsCarrierId], references: [id], onDelete: Cascade)
+  bids           Bid[]
+ 
+  insurance      Insurance?
+
+  @@map("contract")
+}
+
+model Bid {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  contractId Int
+  amount     Int
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+
+  @@map("bids")
+}
+
+model VehicleType {
+  id                Int             @id @default(autoincrement())
+  wheelers          VehicleWheel
+  category          VehicleCategory
+  brand             String          @db.VarChar(50)
+  insuranceValidity Boolean
+  driverId Int
+  driver     User         @relation("UserVehicles", fields: [driverId], references: [id], onDelete: Cascade)
+
+  @@map("vechiletype")
+}
+
+model Insurance {
+  id         Int           @id @default(autoincrement())
+  contractId Int           @unique
+  type       InsuranceType
+  premium    Float
+
+  contract   Contract      @relation(fields: [contractId], references: [id], onDelete: Cascade)
+
+  @@map("insurance")
+}
