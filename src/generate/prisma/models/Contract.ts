@@ -60,6 +60,9 @@ export type ContractMinAggregateOutputType = {
   type: $Enums.GoodsType | null
   createdAt: Date | null
   description: string | null
+  deliveryStatus: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt: Date | null
+  deliverableNotes: string | null
 }
 
 export type ContractMaxAggregateOutputType = {
@@ -78,6 +81,9 @@ export type ContractMaxAggregateOutputType = {
   type: $Enums.GoodsType | null
   createdAt: Date | null
   description: string | null
+  deliveryStatus: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt: Date | null
+  deliverableNotes: string | null
 }
 
 export type ContractCountAggregateOutputType = {
@@ -97,6 +103,9 @@ export type ContractCountAggregateOutputType = {
   createdAt: number
   description: number
   requirements: number
+  deliveryStatus: number
+  deliveryConfirmedAt: number
+  deliverableNotes: number
   _all: number
 }
 
@@ -135,6 +144,9 @@ export type ContractMinAggregateInputType = {
   type?: true
   createdAt?: true
   description?: true
+  deliveryStatus?: true
+  deliveryConfirmedAt?: true
+  deliverableNotes?: true
 }
 
 export type ContractMaxAggregateInputType = {
@@ -153,6 +165,9 @@ export type ContractMaxAggregateInputType = {
   type?: true
   createdAt?: true
   description?: true
+  deliveryStatus?: true
+  deliveryConfirmedAt?: true
+  deliverableNotes?: true
 }
 
 export type ContractCountAggregateInputType = {
@@ -172,6 +187,9 @@ export type ContractCountAggregateInputType = {
   createdAt?: true
   description?: true
   requirements?: true
+  deliveryStatus?: true
+  deliveryConfirmedAt?: true
+  deliverableNotes?: true
   _all?: true
 }
 
@@ -278,6 +296,9 @@ export type ContractGroupByOutputType = {
   createdAt: Date
   description: string
   requirements: string[]
+  deliveryStatus: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt: Date | null
+  deliverableNotes: string | null
   _count: ContractCountAggregateOutputType | null
   _avg: ContractAvgAggregateOutputType | null
   _sum: ContractSumAggregateOutputType | null
@@ -320,10 +341,13 @@ export type ContractWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Contract"> | Date | string
   description?: Prisma.StringFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
+  deliveryStatus?: Prisma.EnumDeliveryStatusNullableFilter<"Contract"> | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.DateTimeNullableFilter<"Contract"> | Date | string | null
+  deliverableNotes?: Prisma.StringNullableFilter<"Contract"> | string | null
   contractor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   goodsCarrier?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   bids?: Prisma.BidListRelationFilter
-  insurance?: Prisma.XOR<Prisma.InsuranceNullableScalarRelationFilter, Prisma.InsuranceWhereInput> | null
+  ratings?: Prisma.RatingListRelationFilter
 }
 
 export type ContractOrderByWithRelationInput = {
@@ -343,10 +367,13 @@ export type ContractOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   description?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
+  deliveryStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  deliveryConfirmedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  deliverableNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   contractor?: Prisma.UserOrderByWithRelationInput
   goodsCarrier?: Prisma.UserOrderByWithRelationInput
   bids?: Prisma.BidOrderByRelationAggregateInput
-  insurance?: Prisma.InsuranceOrderByWithRelationInput
+  ratings?: Prisma.RatingOrderByRelationAggregateInput
 }
 
 export type ContractWhereUniqueInput = Prisma.AtLeast<{
@@ -369,10 +396,13 @@ export type ContractWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Contract"> | Date | string
   description?: Prisma.StringFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
+  deliveryStatus?: Prisma.EnumDeliveryStatusNullableFilter<"Contract"> | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.DateTimeNullableFilter<"Contract"> | Date | string | null
+  deliverableNotes?: Prisma.StringNullableFilter<"Contract"> | string | null
   contractor?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   goodsCarrier?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   bids?: Prisma.BidListRelationFilter
-  insurance?: Prisma.XOR<Prisma.InsuranceNullableScalarRelationFilter, Prisma.InsuranceWhereInput> | null
+  ratings?: Prisma.RatingListRelationFilter
 }, "id">
 
 export type ContractOrderByWithAggregationInput = {
@@ -392,6 +422,9 @@ export type ContractOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   description?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
+  deliveryStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  deliveryConfirmedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  deliverableNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ContractCountOrderByAggregateInput
   _avg?: Prisma.ContractAvgOrderByAggregateInput
   _max?: Prisma.ContractMaxOrderByAggregateInput
@@ -419,6 +452,9 @@ export type ContractScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Contract"> | Date | string
   description?: Prisma.StringWithAggregatesFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
+  deliveryStatus?: Prisma.EnumDeliveryStatusNullableWithAggregatesFilter<"Contract"> | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Contract"> | Date | string | null
+  deliverableNotes?: Prisma.StringNullableWithAggregatesFilter<"Contract"> | string | null
 }
 
 export type ContractCreateInput = {
@@ -435,10 +471,13 @@ export type ContractCreateInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   contractor: Prisma.UserCreateNestedOneWithoutContractsCreatedInput
   goodsCarrier?: Prisma.UserCreateNestedOneWithoutContractsCarriedInput
   bids?: Prisma.BidCreateNestedManyWithoutContractInput
-  insurance?: Prisma.InsuranceCreateNestedOneWithoutContractInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutContractInput
 }
 
 export type ContractUncheckedCreateInput = {
@@ -458,8 +497,11 @@ export type ContractUncheckedCreateInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutContractInput
-  insurance?: Prisma.InsuranceUncheckedCreateNestedOneWithoutContractInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutContractInput
 }
 
 export type ContractUpdateInput = {
@@ -476,10 +518,13 @@ export type ContractUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contractor?: Prisma.UserUpdateOneRequiredWithoutContractsCreatedNestedInput
   goodsCarrier?: Prisma.UserUpdateOneWithoutContractsCarriedNestedInput
   bids?: Prisma.BidUpdateManyWithoutContractNestedInput
-  insurance?: Prisma.InsuranceUpdateOneWithoutContractNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutContractNestedInput
 }
 
 export type ContractUncheckedUpdateInput = {
@@ -499,8 +544,11 @@ export type ContractUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bids?: Prisma.BidUncheckedUpdateManyWithoutContractNestedInput
-  insurance?: Prisma.InsuranceUncheckedUpdateOneWithoutContractNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutContractNestedInput
 }
 
 export type ContractCreateManyInput = {
@@ -520,6 +568,9 @@ export type ContractCreateManyInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
 }
 
 export type ContractUpdateManyMutationInput = {
@@ -536,6 +587,9 @@ export type ContractUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ContractUncheckedUpdateManyInput = {
@@ -555,6 +609,9 @@ export type ContractUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ContractListRelationFilter = {
@@ -592,6 +649,9 @@ export type ContractCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   description?: Prisma.SortOrder
   requirements?: Prisma.SortOrder
+  deliveryStatus?: Prisma.SortOrder
+  deliveryConfirmedAt?: Prisma.SortOrder
+  deliverableNotes?: Prisma.SortOrder
 }
 
 export type ContractAvgOrderByAggregateInput = {
@@ -619,6 +679,9 @@ export type ContractMaxOrderByAggregateInput = {
   type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  deliveryStatus?: Prisma.SortOrder
+  deliveryConfirmedAt?: Prisma.SortOrder
+  deliverableNotes?: Prisma.SortOrder
 }
 
 export type ContractMinOrderByAggregateInput = {
@@ -637,6 +700,9 @@ export type ContractMinOrderByAggregateInput = {
   type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  deliveryStatus?: Prisma.SortOrder
+  deliveryConfirmedAt?: Prisma.SortOrder
+  deliverableNotes?: Prisma.SortOrder
 }
 
 export type ContractSumOrderByAggregateInput = {
@@ -778,6 +844,18 @@ export type ContractUpdaterequirementsInput = {
   push?: string | string[]
 }
 
+export type NullableEnumDeliveryStatusFieldUpdateOperationsInput = {
+  set?: $Enums.DeliveryStatus | null
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type ContractCreateNestedOneWithoutBidsInput = {
   create?: Prisma.XOR<Prisma.ContractCreateWithoutBidsInput, Prisma.ContractUncheckedCreateWithoutBidsInput>
   connectOrCreate?: Prisma.ContractCreateOrConnectWithoutBidsInput
@@ -792,18 +870,18 @@ export type ContractUpdateOneRequiredWithoutBidsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ContractUpdateToOneWithWhereWithoutBidsInput, Prisma.ContractUpdateWithoutBidsInput>, Prisma.ContractUncheckedUpdateWithoutBidsInput>
 }
 
-export type ContractCreateNestedOneWithoutInsuranceInput = {
-  create?: Prisma.XOR<Prisma.ContractCreateWithoutInsuranceInput, Prisma.ContractUncheckedCreateWithoutInsuranceInput>
-  connectOrCreate?: Prisma.ContractCreateOrConnectWithoutInsuranceInput
+export type ContractCreateNestedOneWithoutRatingsInput = {
+  create?: Prisma.XOR<Prisma.ContractCreateWithoutRatingsInput, Prisma.ContractUncheckedCreateWithoutRatingsInput>
+  connectOrCreate?: Prisma.ContractCreateOrConnectWithoutRatingsInput
   connect?: Prisma.ContractWhereUniqueInput
 }
 
-export type ContractUpdateOneRequiredWithoutInsuranceNestedInput = {
-  create?: Prisma.XOR<Prisma.ContractCreateWithoutInsuranceInput, Prisma.ContractUncheckedCreateWithoutInsuranceInput>
-  connectOrCreate?: Prisma.ContractCreateOrConnectWithoutInsuranceInput
-  upsert?: Prisma.ContractUpsertWithoutInsuranceInput
+export type ContractUpdateOneRequiredWithoutRatingsNestedInput = {
+  create?: Prisma.XOR<Prisma.ContractCreateWithoutRatingsInput, Prisma.ContractUncheckedCreateWithoutRatingsInput>
+  connectOrCreate?: Prisma.ContractCreateOrConnectWithoutRatingsInput
+  upsert?: Prisma.ContractUpsertWithoutRatingsInput
   connect?: Prisma.ContractWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ContractUpdateToOneWithWhereWithoutInsuranceInput, Prisma.ContractUpdateWithoutInsuranceInput>, Prisma.ContractUncheckedUpdateWithoutInsuranceInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ContractUpdateToOneWithWhereWithoutRatingsInput, Prisma.ContractUpdateWithoutRatingsInput>, Prisma.ContractUncheckedUpdateWithoutRatingsInput>
 }
 
 export type ContractCreateWithoutContractorInput = {
@@ -820,9 +898,12 @@ export type ContractCreateWithoutContractorInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   goodsCarrier?: Prisma.UserCreateNestedOneWithoutContractsCarriedInput
   bids?: Prisma.BidCreateNestedManyWithoutContractInput
-  insurance?: Prisma.InsuranceCreateNestedOneWithoutContractInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutContractInput
 }
 
 export type ContractUncheckedCreateWithoutContractorInput = {
@@ -841,8 +922,11 @@ export type ContractUncheckedCreateWithoutContractorInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutContractInput
-  insurance?: Prisma.InsuranceUncheckedCreateNestedOneWithoutContractInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutContractInput
 }
 
 export type ContractCreateOrConnectWithoutContractorInput = {
@@ -869,9 +953,12 @@ export type ContractCreateWithoutGoodsCarrierInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   contractor: Prisma.UserCreateNestedOneWithoutContractsCreatedInput
   bids?: Prisma.BidCreateNestedManyWithoutContractInput
-  insurance?: Prisma.InsuranceCreateNestedOneWithoutContractInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutContractInput
 }
 
 export type ContractUncheckedCreateWithoutGoodsCarrierInput = {
@@ -890,8 +977,11 @@ export type ContractUncheckedCreateWithoutGoodsCarrierInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutContractInput
-  insurance?: Prisma.InsuranceUncheckedCreateNestedOneWithoutContractInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutContractInput
 }
 
 export type ContractCreateOrConnectWithoutGoodsCarrierInput = {
@@ -940,6 +1030,9 @@ export type ContractScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Contract"> | Date | string
   description?: Prisma.StringFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
+  deliveryStatus?: Prisma.EnumDeliveryStatusNullableFilter<"Contract"> | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.DateTimeNullableFilter<"Contract"> | Date | string | null
+  deliverableNotes?: Prisma.StringNullableFilter<"Contract"> | string | null
 }
 
 export type ContractUpsertWithWhereUniqueWithoutGoodsCarrierInput = {
@@ -972,9 +1065,12 @@ export type ContractCreateWithoutBidsInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   contractor: Prisma.UserCreateNestedOneWithoutContractsCreatedInput
   goodsCarrier?: Prisma.UserCreateNestedOneWithoutContractsCarriedInput
-  insurance?: Prisma.InsuranceCreateNestedOneWithoutContractInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutContractInput
 }
 
 export type ContractUncheckedCreateWithoutBidsInput = {
@@ -994,7 +1090,10 @@ export type ContractUncheckedCreateWithoutBidsInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
-  insurance?: Prisma.InsuranceUncheckedCreateNestedOneWithoutContractInput
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutContractInput
 }
 
 export type ContractCreateOrConnectWithoutBidsInput = {
@@ -1027,9 +1126,12 @@ export type ContractUpdateWithoutBidsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contractor?: Prisma.UserUpdateOneRequiredWithoutContractsCreatedNestedInput
   goodsCarrier?: Prisma.UserUpdateOneWithoutContractsCarriedNestedInput
-  insurance?: Prisma.InsuranceUpdateOneWithoutContractNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutContractNestedInput
 }
 
 export type ContractUncheckedUpdateWithoutBidsInput = {
@@ -1049,10 +1151,13 @@ export type ContractUncheckedUpdateWithoutBidsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
-  insurance?: Prisma.InsuranceUncheckedUpdateOneWithoutContractNestedInput
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutContractNestedInput
 }
 
-export type ContractCreateWithoutInsuranceInput = {
+export type ContractCreateWithoutRatingsInput = {
   weight: number
   pickupDate: Date | string
   dropDate: Date | string
@@ -1066,12 +1171,15 @@ export type ContractCreateWithoutInsuranceInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   contractor: Prisma.UserCreateNestedOneWithoutContractsCreatedInput
   goodsCarrier?: Prisma.UserCreateNestedOneWithoutContractsCarriedInput
   bids?: Prisma.BidCreateNestedManyWithoutContractInput
 }
 
-export type ContractUncheckedCreateWithoutInsuranceInput = {
+export type ContractUncheckedCreateWithoutRatingsInput = {
   id?: number
   weight: number
   pickupDate: Date | string
@@ -1088,26 +1196,29 @@ export type ContractUncheckedCreateWithoutInsuranceInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutContractInput
 }
 
-export type ContractCreateOrConnectWithoutInsuranceInput = {
+export type ContractCreateOrConnectWithoutRatingsInput = {
   where: Prisma.ContractWhereUniqueInput
-  create: Prisma.XOR<Prisma.ContractCreateWithoutInsuranceInput, Prisma.ContractUncheckedCreateWithoutInsuranceInput>
+  create: Prisma.XOR<Prisma.ContractCreateWithoutRatingsInput, Prisma.ContractUncheckedCreateWithoutRatingsInput>
 }
 
-export type ContractUpsertWithoutInsuranceInput = {
-  update: Prisma.XOR<Prisma.ContractUpdateWithoutInsuranceInput, Prisma.ContractUncheckedUpdateWithoutInsuranceInput>
-  create: Prisma.XOR<Prisma.ContractCreateWithoutInsuranceInput, Prisma.ContractUncheckedCreateWithoutInsuranceInput>
+export type ContractUpsertWithoutRatingsInput = {
+  update: Prisma.XOR<Prisma.ContractUpdateWithoutRatingsInput, Prisma.ContractUncheckedUpdateWithoutRatingsInput>
+  create: Prisma.XOR<Prisma.ContractCreateWithoutRatingsInput, Prisma.ContractUncheckedCreateWithoutRatingsInput>
   where?: Prisma.ContractWhereInput
 }
 
-export type ContractUpdateToOneWithWhereWithoutInsuranceInput = {
+export type ContractUpdateToOneWithWhereWithoutRatingsInput = {
   where?: Prisma.ContractWhereInput
-  data: Prisma.XOR<Prisma.ContractUpdateWithoutInsuranceInput, Prisma.ContractUncheckedUpdateWithoutInsuranceInput>
+  data: Prisma.XOR<Prisma.ContractUpdateWithoutRatingsInput, Prisma.ContractUncheckedUpdateWithoutRatingsInput>
 }
 
-export type ContractUpdateWithoutInsuranceInput = {
+export type ContractUpdateWithoutRatingsInput = {
   weight?: Prisma.FloatFieldUpdateOperationsInput | number
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dropDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1121,12 +1232,15 @@ export type ContractUpdateWithoutInsuranceInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contractor?: Prisma.UserUpdateOneRequiredWithoutContractsCreatedNestedInput
   goodsCarrier?: Prisma.UserUpdateOneWithoutContractsCarriedNestedInput
   bids?: Prisma.BidUpdateManyWithoutContractNestedInput
 }
 
-export type ContractUncheckedUpdateWithoutInsuranceInput = {
+export type ContractUncheckedUpdateWithoutRatingsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   weight?: Prisma.FloatFieldUpdateOperationsInput | number
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1143,6 +1257,9 @@ export type ContractUncheckedUpdateWithoutInsuranceInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bids?: Prisma.BidUncheckedUpdateManyWithoutContractNestedInput
 }
 
@@ -1162,6 +1279,9 @@ export type ContractCreateManyContractorInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
 }
 
 export type ContractCreateManyGoodsCarrierInput = {
@@ -1180,6 +1300,9 @@ export type ContractCreateManyGoodsCarrierInput = {
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
+  deliveryStatus?: $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Date | string | null
+  deliverableNotes?: string | null
 }
 
 export type ContractUpdateWithoutContractorInput = {
@@ -1196,9 +1319,12 @@ export type ContractUpdateWithoutContractorInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   goodsCarrier?: Prisma.UserUpdateOneWithoutContractsCarriedNestedInput
   bids?: Prisma.BidUpdateManyWithoutContractNestedInput
-  insurance?: Prisma.InsuranceUpdateOneWithoutContractNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutContractNestedInput
 }
 
 export type ContractUncheckedUpdateWithoutContractorInput = {
@@ -1217,8 +1343,11 @@ export type ContractUncheckedUpdateWithoutContractorInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bids?: Prisma.BidUncheckedUpdateManyWithoutContractNestedInput
-  insurance?: Prisma.InsuranceUncheckedUpdateOneWithoutContractNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutContractNestedInput
 }
 
 export type ContractUncheckedUpdateManyWithoutContractorInput = {
@@ -1237,6 +1366,9 @@ export type ContractUncheckedUpdateManyWithoutContractorInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ContractUpdateWithoutGoodsCarrierInput = {
@@ -1253,9 +1385,12 @@ export type ContractUpdateWithoutGoodsCarrierInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contractor?: Prisma.UserUpdateOneRequiredWithoutContractsCreatedNestedInput
   bids?: Prisma.BidUpdateManyWithoutContractNestedInput
-  insurance?: Prisma.InsuranceUpdateOneWithoutContractNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutContractNestedInput
 }
 
 export type ContractUncheckedUpdateWithoutGoodsCarrierInput = {
@@ -1274,8 +1409,11 @@ export type ContractUncheckedUpdateWithoutGoodsCarrierInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bids?: Prisma.BidUncheckedUpdateManyWithoutContractNestedInput
-  insurance?: Prisma.InsuranceUncheckedUpdateOneWithoutContractNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutContractNestedInput
 }
 
 export type ContractUncheckedUpdateManyWithoutGoodsCarrierInput = {
@@ -1294,6 +1432,9 @@ export type ContractUncheckedUpdateManyWithoutGoodsCarrierInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
+  deliveryStatus?: Prisma.NullableEnumDeliveryStatusFieldUpdateOperationsInput | $Enums.DeliveryStatus | null
+  deliveryConfirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deliverableNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1303,10 +1444,12 @@ export type ContractUncheckedUpdateManyWithoutGoodsCarrierInput = {
 
 export type ContractCountOutputType = {
   bids: number
+  ratings: number
 }
 
 export type ContractCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bids?: boolean | ContractCountOutputTypeCountBidsArgs
+  ratings?: boolean | ContractCountOutputTypeCountRatingsArgs
 }
 
 /**
@@ -1324,6 +1467,13 @@ export type ContractCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
  */
 export type ContractCountOutputTypeCountBidsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BidWhereInput
+}
+
+/**
+ * ContractCountOutputType without action
+ */
+export type ContractCountOutputTypeCountRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RatingWhereInput
 }
 
 
@@ -1344,10 +1494,13 @@ export type ContractSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   description?: boolean
   requirements?: boolean
+  deliveryStatus?: boolean
+  deliveryConfirmedAt?: boolean
+  deliverableNotes?: boolean
   contractor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   goodsCarrier?: boolean | Prisma.Contract$goodsCarrierArgs<ExtArgs>
   bids?: boolean | Prisma.Contract$bidsArgs<ExtArgs>
-  insurance?: boolean | Prisma.Contract$insuranceArgs<ExtArgs>
+  ratings?: boolean | Prisma.Contract$ratingsArgs<ExtArgs>
   _count?: boolean | Prisma.ContractCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["contract"]>
 
@@ -1368,6 +1521,9 @@ export type ContractSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   description?: boolean
   requirements?: boolean
+  deliveryStatus?: boolean
+  deliveryConfirmedAt?: boolean
+  deliverableNotes?: boolean
   contractor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   goodsCarrier?: boolean | Prisma.Contract$goodsCarrierArgs<ExtArgs>
 }, ExtArgs["result"]["contract"]>
@@ -1389,6 +1545,9 @@ export type ContractSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   description?: boolean
   requirements?: boolean
+  deliveryStatus?: boolean
+  deliveryConfirmedAt?: boolean
+  deliverableNotes?: boolean
   contractor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   goodsCarrier?: boolean | Prisma.Contract$goodsCarrierArgs<ExtArgs>
 }, ExtArgs["result"]["contract"]>
@@ -1410,14 +1569,17 @@ export type ContractSelectScalar = {
   createdAt?: boolean
   description?: boolean
   requirements?: boolean
+  deliveryStatus?: boolean
+  deliveryConfirmedAt?: boolean
+  deliverableNotes?: boolean
 }
 
-export type ContractOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "weight" | "pickupDate" | "dropDate" | "startLocation" | "endLocation" | "approxKms" | "contractorId" | "goodsCarrierId" | "typeOfVehicle" | "insured" | "winningPrice" | "type" | "createdAt" | "description" | "requirements", ExtArgs["result"]["contract"]>
+export type ContractOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "weight" | "pickupDate" | "dropDate" | "startLocation" | "endLocation" | "approxKms" | "contractorId" | "goodsCarrierId" | "typeOfVehicle" | "insured" | "winningPrice" | "type" | "createdAt" | "description" | "requirements" | "deliveryStatus" | "deliveryConfirmedAt" | "deliverableNotes", ExtArgs["result"]["contract"]>
 export type ContractInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contractor?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   goodsCarrier?: boolean | Prisma.Contract$goodsCarrierArgs<ExtArgs>
   bids?: boolean | Prisma.Contract$bidsArgs<ExtArgs>
-  insurance?: boolean | Prisma.Contract$insuranceArgs<ExtArgs>
+  ratings?: boolean | Prisma.Contract$ratingsArgs<ExtArgs>
   _count?: boolean | Prisma.ContractCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ContractIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1435,7 +1597,7 @@ export type $ContractPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     contractor: Prisma.$UserPayload<ExtArgs>
     goodsCarrier: Prisma.$UserPayload<ExtArgs> | null
     bids: Prisma.$BidPayload<ExtArgs>[]
-    insurance: Prisma.$InsurancePayload<ExtArgs> | null
+    ratings: Prisma.$RatingPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1454,6 +1616,9 @@ export type $ContractPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     createdAt: Date
     description: string
     requirements: string[]
+    deliveryStatus: $Enums.DeliveryStatus | null
+    deliveryConfirmedAt: Date | null
+    deliverableNotes: string | null
   }, ExtArgs["result"]["contract"]>
   composites: {}
 }
@@ -1851,7 +2016,7 @@ export interface Prisma__ContractClient<T, Null = never, ExtArgs extends runtime
   contractor<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   goodsCarrier<T extends Prisma.Contract$goodsCarrierArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Contract$goodsCarrierArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   bids<T extends Prisma.Contract$bidsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Contract$bidsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  insurance<T extends Prisma.Contract$insuranceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Contract$insuranceArgs<ExtArgs>>): Prisma.Prisma__InsuranceClient<runtime.Types.Result.GetResult<Prisma.$InsurancePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  ratings<T extends Prisma.Contract$ratingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Contract$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1897,6 +2062,9 @@ export interface ContractFieldRefs {
   readonly createdAt: Prisma.FieldRef<"Contract", 'DateTime'>
   readonly description: Prisma.FieldRef<"Contract", 'String'>
   readonly requirements: Prisma.FieldRef<"Contract", 'String[]'>
+  readonly deliveryStatus: Prisma.FieldRef<"Contract", 'DeliveryStatus'>
+  readonly deliveryConfirmedAt: Prisma.FieldRef<"Contract", 'DateTime'>
+  readonly deliverableNotes: Prisma.FieldRef<"Contract", 'String'>
 }
     
 
@@ -2336,22 +2504,27 @@ export type Contract$bidsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * Contract.insurance
+ * Contract.ratings
  */
-export type Contract$insuranceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Contract$ratingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Insurance
+   * Select specific fields to fetch from the Rating
    */
-  select?: Prisma.InsuranceSelect<ExtArgs> | null
+  select?: Prisma.RatingSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Insurance
+   * Omit specific fields from the Rating
    */
-  omit?: Prisma.InsuranceOmit<ExtArgs> | null
+  omit?: Prisma.RatingOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InsuranceInclude<ExtArgs> | null
-  where?: Prisma.InsuranceWhereInput
+  include?: Prisma.RatingInclude<ExtArgs> | null
+  where?: Prisma.RatingWhereInput
+  orderBy?: Prisma.RatingOrderByWithRelationInput | Prisma.RatingOrderByWithRelationInput[]
+  cursor?: Prisma.RatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RatingScalarFieldEnum | Prisma.RatingScalarFieldEnum[]
 }
 
 /**

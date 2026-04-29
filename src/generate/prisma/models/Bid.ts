@@ -45,6 +45,8 @@ export type BidMinAggregateOutputType = {
   userId: number | null
   contractId: number | null
   amount: number | null
+  status: string | null
+  createdAt: Date | null
 }
 
 export type BidMaxAggregateOutputType = {
@@ -52,6 +54,8 @@ export type BidMaxAggregateOutputType = {
   userId: number | null
   contractId: number | null
   amount: number | null
+  status: string | null
+  createdAt: Date | null
 }
 
 export type BidCountAggregateOutputType = {
@@ -59,6 +63,8 @@ export type BidCountAggregateOutputType = {
   userId: number
   contractId: number
   amount: number
+  status: number
+  createdAt: number
   _all: number
 }
 
@@ -82,6 +88,8 @@ export type BidMinAggregateInputType = {
   userId?: true
   contractId?: true
   amount?: true
+  status?: true
+  createdAt?: true
 }
 
 export type BidMaxAggregateInputType = {
@@ -89,6 +97,8 @@ export type BidMaxAggregateInputType = {
   userId?: true
   contractId?: true
   amount?: true
+  status?: true
+  createdAt?: true
 }
 
 export type BidCountAggregateInputType = {
@@ -96,6 +106,8 @@ export type BidCountAggregateInputType = {
   userId?: true
   contractId?: true
   amount?: true
+  status?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -190,6 +202,8 @@ export type BidGroupByOutputType = {
   userId: number
   contractId: number
   amount: number
+  status: string
+  createdAt: Date
   _count: BidCountAggregateOutputType | null
   _avg: BidAvgAggregateOutputType | null
   _sum: BidSumAggregateOutputType | null
@@ -220,6 +234,8 @@ export type BidWhereInput = {
   userId?: Prisma.IntFilter<"Bid"> | number
   contractId?: Prisma.IntFilter<"Bid"> | number
   amount?: Prisma.IntFilter<"Bid"> | number
+  status?: Prisma.StringFilter<"Bid"> | string
+  createdAt?: Prisma.DateTimeFilter<"Bid"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   contract?: Prisma.XOR<Prisma.ContractScalarRelationFilter, Prisma.ContractWhereInput>
 }
@@ -229,6 +245,8 @@ export type BidOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   contractId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   contract?: Prisma.ContractOrderByWithRelationInput
 }
@@ -241,6 +259,8 @@ export type BidWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.IntFilter<"Bid"> | number
   contractId?: Prisma.IntFilter<"Bid"> | number
   amount?: Prisma.IntFilter<"Bid"> | number
+  status?: Prisma.StringFilter<"Bid"> | string
+  createdAt?: Prisma.DateTimeFilter<"Bid"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   contract?: Prisma.XOR<Prisma.ContractScalarRelationFilter, Prisma.ContractWhereInput>
 }, "id">
@@ -250,6 +270,8 @@ export type BidOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   contractId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.BidCountOrderByAggregateInput
   _avg?: Prisma.BidAvgOrderByAggregateInput
   _max?: Prisma.BidMaxOrderByAggregateInput
@@ -265,10 +287,14 @@ export type BidScalarWhereWithAggregatesInput = {
   userId?: Prisma.IntWithAggregatesFilter<"Bid"> | number
   contractId?: Prisma.IntWithAggregatesFilter<"Bid"> | number
   amount?: Prisma.IntWithAggregatesFilter<"Bid"> | number
+  status?: Prisma.StringWithAggregatesFilter<"Bid"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Bid"> | Date | string
 }
 
 export type BidCreateInput = {
   amount: number
+  status: string
+  createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutBidsInput
   contract: Prisma.ContractCreateNestedOneWithoutBidsInput
 }
@@ -278,10 +304,14 @@ export type BidUncheckedCreateInput = {
   userId: number
   contractId: number
   amount: number
+  status: string
+  createdAt?: Date | string
 }
 
 export type BidUpdateInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutBidsNestedInput
   contract?: Prisma.ContractUpdateOneRequiredWithoutBidsNestedInput
 }
@@ -291,6 +321,8 @@ export type BidUncheckedUpdateInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   contractId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BidCreateManyInput = {
@@ -298,10 +330,14 @@ export type BidCreateManyInput = {
   userId: number
   contractId: number
   amount: number
+  status: string
+  createdAt?: Date | string
 }
 
 export type BidUpdateManyMutationInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BidUncheckedUpdateManyInput = {
@@ -309,6 +345,8 @@ export type BidUncheckedUpdateManyInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   contractId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BidListRelationFilter = {
@@ -326,6 +364,8 @@ export type BidCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   contractId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type BidAvgOrderByAggregateInput = {
@@ -340,6 +380,8 @@ export type BidMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   contractId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type BidMinOrderByAggregateInput = {
@@ -347,6 +389,8 @@ export type BidMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   contractId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type BidSumOrderByAggregateInput = {
@@ -442,6 +486,8 @@ export type BidUncheckedUpdateManyWithoutContractNestedInput = {
 
 export type BidCreateWithoutUserInput = {
   amount: number
+  status: string
+  createdAt?: Date | string
   contract: Prisma.ContractCreateNestedOneWithoutBidsInput
 }
 
@@ -449,6 +495,8 @@ export type BidUncheckedCreateWithoutUserInput = {
   id?: number
   contractId: number
   amount: number
+  status: string
+  createdAt?: Date | string
 }
 
 export type BidCreateOrConnectWithoutUserInput = {
@@ -485,10 +533,14 @@ export type BidScalarWhereInput = {
   userId?: Prisma.IntFilter<"Bid"> | number
   contractId?: Prisma.IntFilter<"Bid"> | number
   amount?: Prisma.IntFilter<"Bid"> | number
+  status?: Prisma.StringFilter<"Bid"> | string
+  createdAt?: Prisma.DateTimeFilter<"Bid"> | Date | string
 }
 
 export type BidCreateWithoutContractInput = {
   amount: number
+  status: string
+  createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutBidsInput
 }
 
@@ -496,6 +548,8 @@ export type BidUncheckedCreateWithoutContractInput = {
   id?: number
   userId: number
   amount: number
+  status: string
+  createdAt?: Date | string
 }
 
 export type BidCreateOrConnectWithoutContractInput = {
@@ -528,10 +582,14 @@ export type BidCreateManyUserInput = {
   id?: number
   contractId: number
   amount: number
+  status: string
+  createdAt?: Date | string
 }
 
 export type BidUpdateWithoutUserInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   contract?: Prisma.ContractUpdateOneRequiredWithoutBidsNestedInput
 }
 
@@ -539,22 +597,30 @@ export type BidUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   contractId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BidUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   contractId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BidCreateManyContractInput = {
   id?: number
   userId: number
   amount: number
+  status: string
+  createdAt?: Date | string
 }
 
 export type BidUpdateWithoutContractInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutBidsNestedInput
 }
 
@@ -562,12 +628,16 @@ export type BidUncheckedUpdateWithoutContractInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BidUncheckedUpdateManyWithoutContractInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -577,6 +647,8 @@ export type BidSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   userId?: boolean
   contractId?: boolean
   amount?: boolean
+  status?: boolean
+  createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   contract?: boolean | Prisma.ContractDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bid"]>
@@ -586,6 +658,8 @@ export type BidSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   userId?: boolean
   contractId?: boolean
   amount?: boolean
+  status?: boolean
+  createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   contract?: boolean | Prisma.ContractDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bid"]>
@@ -595,6 +669,8 @@ export type BidSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   userId?: boolean
   contractId?: boolean
   amount?: boolean
+  status?: boolean
+  createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   contract?: boolean | Prisma.ContractDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bid"]>
@@ -604,9 +680,11 @@ export type BidSelectScalar = {
   userId?: boolean
   contractId?: boolean
   amount?: boolean
+  status?: boolean
+  createdAt?: boolean
 }
 
-export type BidOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "contractId" | "amount", ExtArgs["result"]["bid"]>
+export type BidOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "contractId" | "amount" | "status" | "createdAt", ExtArgs["result"]["bid"]>
 export type BidInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   contract?: boolean | Prisma.ContractDefaultArgs<ExtArgs>
@@ -631,6 +709,8 @@ export type $BidPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     userId: number
     contractId: number
     amount: number
+    status: string
+    createdAt: Date
   }, ExtArgs["result"]["bid"]>
   composites: {}
 }
@@ -1060,6 +1140,8 @@ export interface BidFieldRefs {
   readonly userId: Prisma.FieldRef<"Bid", 'Int'>
   readonly contractId: Prisma.FieldRef<"Bid", 'Int'>
   readonly amount: Prisma.FieldRef<"Bid", 'Int'>
+  readonly status: Prisma.FieldRef<"Bid", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Bid", 'DateTime'>
 }
     
 

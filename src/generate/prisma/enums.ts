@@ -45,10 +45,20 @@ export const VehicleCategory = {
 export type VehicleCategory = (typeof VehicleCategory)[keyof typeof VehicleCategory]
 
 
-export const InsuranceType = {
-  BASIC: 'basic',
-  PRO: 'pro',
-  MAXSAVER: 'maxsaver'
+export const Status_Mode = {
+  PENDING: 'pending',
+  ADMIN_APPROVAL: 'admin_approval',
+  APPROVED: 'approved',
+  DECLINED: 'declined'
 } as const
 
-export type InsuranceType = (typeof InsuranceType)[keyof typeof InsuranceType]
+export type Status_Mode = (typeof Status_Mode)[keyof typeof Status_Mode]
+
+
+export const DeliveryStatus = {
+  IN_TRANSIT: 'in_transit',
+  DELIVERED: 'delivered',
+  COMPLETED: 'completed'
+} as const
+
+export type DeliveryStatus = (typeof DeliveryStatus)[keyof typeof DeliveryStatus]

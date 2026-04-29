@@ -55,7 +55,7 @@ export const ModelName = {
   Contract: 'Contract',
   Bid: 'Bid',
   VehicleType: 'VehicleType',
-  Insurance: 'Insurance'
+  Rating: 'Rating'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -81,8 +81,7 @@ export const UserScalarFieldEnum = {
   role: 'role',
   password: 'password',
   contact: 'contact',
-  regularPracticeLocation: 'regularPracticeLocation',
-  rating: 'rating'
+  regularPracticeLocation: 'regularPracticeLocation'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -104,7 +103,10 @@ export const ContractScalarFieldEnum = {
   type: 'type',
   createdAt: 'createdAt',
   description: 'description',
-  requirements: 'requirements'
+  requirements: 'requirements',
+  deliveryStatus: 'deliveryStatus',
+  deliveryConfirmedAt: 'deliveryConfirmedAt',
+  deliverableNotes: 'deliverableNotes'
 } as const
 
 export type ContractScalarFieldEnum = (typeof ContractScalarFieldEnum)[keyof typeof ContractScalarFieldEnum]
@@ -114,7 +116,9 @@ export const BidScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   contractId: 'contractId',
-  amount: 'amount'
+  amount: 'amount',
+  status: 'status',
+  createdAt: 'createdAt'
 } as const
 
 export type BidScalarFieldEnum = (typeof BidScalarFieldEnum)[keyof typeof BidScalarFieldEnum]
@@ -125,21 +129,23 @@ export const VehicleTypeScalarFieldEnum = {
   wheelers: 'wheelers',
   category: 'category',
   brand: 'brand',
-  insuranceValidity: 'insuranceValidity',
   driverId: 'driverId'
 } as const
 
 export type VehicleTypeScalarFieldEnum = (typeof VehicleTypeScalarFieldEnum)[keyof typeof VehicleTypeScalarFieldEnum]
 
 
-export const InsuranceScalarFieldEnum = {
+export const RatingScalarFieldEnum = {
   id: 'id',
+  value: 'value',
+  comment: 'comment',
+  raterId: 'raterId',
+  ratedUserId: 'ratedUserId',
   contractId: 'contractId',
-  type: 'type',
-  premium: 'premium'
+  createdAt: 'createdAt'
 } as const
 
-export type InsuranceScalarFieldEnum = (typeof InsuranceScalarFieldEnum)[keyof typeof InsuranceScalarFieldEnum]
+export type RatingScalarFieldEnum = (typeof RatingScalarFieldEnum)[keyof typeof RatingScalarFieldEnum]
 
 
 export const SortOrder = {

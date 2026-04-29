@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InsuranceType = exports.VehicleCategory = exports.GoodsType = exports.VehicleWheel = exports.UserRole = void 0;
+exports.DeliveryStatus = exports.Status_Mode = exports.VehicleCategory = exports.GoodsType = exports.VehicleWheel = exports.UserRole = void 0;
 exports.UserRole = {
     admin: 'admin',
     contractor: 'contractor',
@@ -21,9 +21,15 @@ exports.VehicleCategory = {
     SEMIOPEN: 'semiopen',
     CONTAINER: 'container'
 };
-exports.InsuranceType = {
-    BASIC: 'basic',
-    PRO: 'pro',
-    MAXSAVER: 'maxsaver'
+exports.Status_Mode = {
+    PENDING: 'pending',
+    ADMIN_APPROVAL: 'admin_approval',
+    APPROVED: 'approved',
+    DECLINED: 'declined'
+};
+exports.DeliveryStatus = {
+    IN_TRANSIT: 'in_transit',
+    DELIVERED: 'delivered',
+    COMPLETED: 'completed'
 };
 //# sourceMappingURL=enums.js.map

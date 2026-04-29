@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma } from '../utils/database';
+import { Status_Mode } from '../generate/prisma/client';
+import { sendEmail, getBidApprovalEmailTemplate } from '../utils/email';
 
 
 export const createBid = async (req: Request, res: Response) => {
@@ -37,22 +39,15 @@ export const createBid = async (req: Request, res: Response) => {
       data: {
         userId: req.user!.id,
         contractId,
-        amount
+        amount,
+        status : "pending"
       },
-      include: {
-        user: {
-          select: {
-            id: true,
-            username: true,
-            rating: true
-          }
-        },
-        contract: true
-      }
+      
     });
 
     res.status(201).json(bid);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to create bid' });
   }
 };
@@ -181,3 +176,151 @@ export const deleteBid = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to delete bid' });
   }
 };
+
+export const pendingBids = async (req:Request,res:Response) => {
+  try {
+    const bids = await prisma.bid.findMany({
+      where : {
+        status : Status_Mode.ADMIN_APPROVAL,
+      },
+      select:{
+        user:{
+          select:{
+            id: true,
+            username:true,
+            email:true
+          }
+        },
+        contract:{
+          select:{
+            id : true,
+            type : true,
+            startLocation:true,
+            endLocation:true,
+            approxKms:true,
+            weight:true,
+            typeOfVehicle:true,
+            
+          }
+          
+        },
+        createdAt : true,
+        amount : true,
+        id:true,
+        status:true
+
+      }
+      
+    })
+
+    res.json({data:bids})
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({error:"failed to fetch the pending bids"})
+
+  }
+
+}
+
+export const approve = async (req:Request,res:Response) => {
+  try{
+    // update the bids status
+    // update the contracts winning amount and goodscarrier
+    const { id } = req.params; // bid id
+    const { goodsCarrierId,amount,contractId } = req.body;
+
+    // Fetch bid details including user and contract info
+    const bid = await prisma.bid.findUnique({
+      where: { id: Number(id) },
+      include: {
+        user: {
+          select: {
+            id: true,
+            username: true,
+            email: true
+          }
+        },
+        contract: {
+          select: {
+            id: true,
+            startLocation: true,
+            endLocation: true,
+            approxKms: true,
+            weight: true,
+            typeOfVehicle: true
+          }
+        }
+      }
+    });
+
+    if (!bid) {
+      return res.status(404).json({ error: 'Bid not found' });
+    }
+
+    const updateContract = await prisma.contract.update({
+      where : {
+        id : contractId
+      },data:{
+        winningPrice : amount,
+        goodsCarrierId : goodsCarrierId
+      }
+
+    })
+
+    const updateBid = await prisma.bid.update({
+      where : {
+        id : Number(id)
+      },
+      data:{
+        status : Status_Mode.APPROVED
+      }
+    })
+
+    // Send email to bidder
+    const emailTemplate = getBidApprovalEmailTemplate(
+      bid.user.username,
+      amount,
+      bid.contract.id,
+      bid.contract.startLocation,
+      bid.contract.endLocation,
+      bid.contract.approxKms,
+      bid.contract.weight,
+      bid.contract.typeOfVehicle
+    );
+
+    await sendEmail({
+      to: bid.user.email,
+      subject: `Bid Approved! - Contract #${bid.contract.id}`,
+      html: emailTemplate
+    });
+
+    res.status(200).json({success:true, message: "Bid approved and email sent to bidder"})
+
+  }catch(error){
+    console.log(error)
+    res.status(500).json({message:"failed to approve the bid"})
+  }
+
+}
+
+export const reject = async (req:Request,res:Response) => {
+  try{
+    // update the bids status 
+    const { bidId } = req.body;
+
+    const updateBid = await prisma.bid.update({
+      where : {
+        id : bidId
+      },
+      data:{
+        status : Status_Mode.PENDING
+      }
+    })
+    
+  }catch(error){
+    res.status(500).json({message:"failed to approve the bid"})
+
+  }
+
+}

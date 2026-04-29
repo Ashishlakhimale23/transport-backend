@@ -12,10 +12,13 @@ router.get('/', auth_1.authenticate, [
     validation_1.validate
 ], user_1.getAllUsers);
 router.get('/:id', auth_1.authenticate, user_1.getUserById);
-router.put('/:id/rating', auth_1.authenticate, [
-    (0, express_validator_1.body)('rating').isFloat({ min: 0, max: 5 }),
+router.post('/submit-rating', auth_1.authenticate, [
+    (0, express_validator_1.body)('ratedUserId').isInt(),
+    (0, express_validator_1.body)('contractId').isInt(),
+    (0, express_validator_1.body)('value').isInt({ min: 1, max: 5 }).withMessage('Rating must be between 1 and 5'),
     validation_1.validate
-], user_1.updateUserRating);
+], user_1.submitRating);
+router.get('/ratings/:userId', auth_1.authenticate, user_1.getUserRatings);
 router.delete('/:id', auth_1.authenticate, (0, auth_1.authorize)(types_1.UserRole.ADMIN), user_1.deleteUser);
 exports.default = router;
 //# sourceMappingURL=user.js.map

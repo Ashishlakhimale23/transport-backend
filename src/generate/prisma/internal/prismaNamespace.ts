@@ -388,7 +388,7 @@ export const ModelName = {
   Contract: 'Contract',
   Bid: 'Bid',
   VehicleType: 'VehicleType',
-  Insurance: 'Insurance'
+  Rating: 'Rating'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -404,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "contract" | "bid" | "vehicleType" | "insurance"
+    modelProps: "user" | "contract" | "bid" | "vehicleType" | "rating"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -704,77 +704,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Insurance: {
-      payload: Prisma.$InsurancePayload<ExtArgs>
-      fields: Prisma.InsuranceFieldRefs
+    Rating: {
+      payload: Prisma.$RatingPayload<ExtArgs>
+      fields: Prisma.RatingFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.InsuranceFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload> | null
+          args: Prisma.RatingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.InsuranceFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>
+          args: Prisma.RatingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>
         }
         findFirst: {
-          args: Prisma.InsuranceFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload> | null
+          args: Prisma.RatingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.InsuranceFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>
+          args: Prisma.RatingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>
         }
         findMany: {
-          args: Prisma.InsuranceFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>[]
+          args: Prisma.RatingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>[]
         }
         create: {
-          args: Prisma.InsuranceCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>
+          args: Prisma.RatingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>
         }
         createMany: {
-          args: Prisma.InsuranceCreateManyArgs<ExtArgs>
+          args: Prisma.RatingCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.InsuranceCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>[]
+          args: Prisma.RatingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>[]
         }
         delete: {
-          args: Prisma.InsuranceDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>
+          args: Prisma.RatingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>
         }
         update: {
-          args: Prisma.InsuranceUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>
+          args: Prisma.RatingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>
         }
         deleteMany: {
-          args: Prisma.InsuranceDeleteManyArgs<ExtArgs>
+          args: Prisma.RatingDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.InsuranceUpdateManyArgs<ExtArgs>
+          args: Prisma.RatingUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.InsuranceUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>[]
+          args: Prisma.RatingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>[]
         }
         upsert: {
-          args: Prisma.InsuranceUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsurancePayload>
+          args: Prisma.RatingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RatingPayload>
         }
         aggregate: {
-          args: Prisma.InsuranceAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateInsurance>
+          args: Prisma.RatingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRating>
         }
         groupBy: {
-          args: Prisma.InsuranceGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.InsuranceGroupByOutputType>[]
+          args: Prisma.RatingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RatingGroupByOutputType>[]
         }
         count: {
-          args: Prisma.InsuranceCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.InsuranceCountAggregateOutputType> | number
+          args: Prisma.RatingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RatingCountAggregateOutputType> | number
         }
       }
     }
@@ -824,8 +824,7 @@ export const UserScalarFieldEnum = {
   role: 'role',
   password: 'password',
   contact: 'contact',
-  regularPracticeLocation: 'regularPracticeLocation',
-  rating: 'rating'
+  regularPracticeLocation: 'regularPracticeLocation'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -847,7 +846,10 @@ export const ContractScalarFieldEnum = {
   type: 'type',
   createdAt: 'createdAt',
   description: 'description',
-  requirements: 'requirements'
+  requirements: 'requirements',
+  deliveryStatus: 'deliveryStatus',
+  deliveryConfirmedAt: 'deliveryConfirmedAt',
+  deliverableNotes: 'deliverableNotes'
 } as const
 
 export type ContractScalarFieldEnum = (typeof ContractScalarFieldEnum)[keyof typeof ContractScalarFieldEnum]
@@ -857,7 +859,9 @@ export const BidScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   contractId: 'contractId',
-  amount: 'amount'
+  amount: 'amount',
+  status: 'status',
+  createdAt: 'createdAt'
 } as const
 
 export type BidScalarFieldEnum = (typeof BidScalarFieldEnum)[keyof typeof BidScalarFieldEnum]
@@ -868,21 +872,23 @@ export const VehicleTypeScalarFieldEnum = {
   wheelers: 'wheelers',
   category: 'category',
   brand: 'brand',
-  insuranceValidity: 'insuranceValidity',
   driverId: 'driverId'
 } as const
 
 export type VehicleTypeScalarFieldEnum = (typeof VehicleTypeScalarFieldEnum)[keyof typeof VehicleTypeScalarFieldEnum]
 
 
-export const InsuranceScalarFieldEnum = {
+export const RatingScalarFieldEnum = {
   id: 'id',
+  value: 'value',
+  comment: 'comment',
+  raterId: 'raterId',
+  ratedUserId: 'ratedUserId',
   contractId: 'contractId',
-  type: 'type',
-  premium: 'premium'
+  createdAt: 'createdAt'
 } as const
 
-export type InsuranceScalarFieldEnum = (typeof InsuranceScalarFieldEnum)[keyof typeof InsuranceScalarFieldEnum]
+export type RatingScalarFieldEnum = (typeof RatingScalarFieldEnum)[keyof typeof RatingScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1021,6 +1027,20 @@ export type ListEnumGoodsTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
 
 
 /**
+ * Reference to a field of type 'DeliveryStatus'
+ */
+export type EnumDeliveryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DeliveryStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'DeliveryStatus[]'
+ */
+export type ListEnumDeliveryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DeliveryStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'VehicleCategory'
  */
 export type EnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory'>
@@ -1031,20 +1051,6 @@ export type EnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$
  * Reference to a field of type 'VehicleCategory[]'
  */
 export type ListEnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory[]'>
-    
-
-
-/**
- * Reference to a field of type 'InsuranceType'
- */
-export type EnumInsuranceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InsuranceType'>
-    
-
-
-/**
- * Reference to a field of type 'InsuranceType[]'
- */
-export type ListEnumInsuranceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InsuranceType[]'>
     
 
 /**
@@ -1146,7 +1152,7 @@ export type GlobalOmitConfig = {
   contract?: Prisma.ContractOmit
   bid?: Prisma.BidOmit
   vehicleType?: Prisma.VehicleTypeOmit
-  insurance?: Prisma.InsuranceOmit
+  rating?: Prisma.RatingOmit
 }
 
 /* Types for Logging */

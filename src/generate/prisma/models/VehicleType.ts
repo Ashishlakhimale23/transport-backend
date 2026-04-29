@@ -41,7 +41,6 @@ export type VehicleTypeMinAggregateOutputType = {
   wheelers: $Enums.VehicleWheel | null
   category: $Enums.VehicleCategory | null
   brand: string | null
-  insuranceValidity: boolean | null
   driverId: number | null
 }
 
@@ -50,7 +49,6 @@ export type VehicleTypeMaxAggregateOutputType = {
   wheelers: $Enums.VehicleWheel | null
   category: $Enums.VehicleCategory | null
   brand: string | null
-  insuranceValidity: boolean | null
   driverId: number | null
 }
 
@@ -59,7 +57,6 @@ export type VehicleTypeCountAggregateOutputType = {
   wheelers: number
   category: number
   brand: number
-  insuranceValidity: number
   driverId: number
   _all: number
 }
@@ -80,7 +77,6 @@ export type VehicleTypeMinAggregateInputType = {
   wheelers?: true
   category?: true
   brand?: true
-  insuranceValidity?: true
   driverId?: true
 }
 
@@ -89,7 +85,6 @@ export type VehicleTypeMaxAggregateInputType = {
   wheelers?: true
   category?: true
   brand?: true
-  insuranceValidity?: true
   driverId?: true
 }
 
@@ -98,7 +93,6 @@ export type VehicleTypeCountAggregateInputType = {
   wheelers?: true
   category?: true
   brand?: true
-  insuranceValidity?: true
   driverId?: true
   _all?: true
 }
@@ -194,7 +188,6 @@ export type VehicleTypeGroupByOutputType = {
   wheelers: $Enums.VehicleWheel
   category: $Enums.VehicleCategory
   brand: string
-  insuranceValidity: boolean
   driverId: number
   _count: VehicleTypeCountAggregateOutputType | null
   _avg: VehicleTypeAvgAggregateOutputType | null
@@ -226,7 +219,6 @@ export type VehicleTypeWhereInput = {
   wheelers?: Prisma.EnumVehicleWheelFilter<"VehicleType"> | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFilter<"VehicleType"> | $Enums.VehicleCategory
   brand?: Prisma.StringFilter<"VehicleType"> | string
-  insuranceValidity?: Prisma.BoolFilter<"VehicleType"> | boolean
   driverId?: Prisma.IntFilter<"VehicleType"> | number
   driver?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -236,7 +228,6 @@ export type VehicleTypeOrderByWithRelationInput = {
   wheelers?: Prisma.SortOrder
   category?: Prisma.SortOrder
   brand?: Prisma.SortOrder
-  insuranceValidity?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
   driver?: Prisma.UserOrderByWithRelationInput
 }
@@ -249,7 +240,6 @@ export type VehicleTypeWhereUniqueInput = Prisma.AtLeast<{
   wheelers?: Prisma.EnumVehicleWheelFilter<"VehicleType"> | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFilter<"VehicleType"> | $Enums.VehicleCategory
   brand?: Prisma.StringFilter<"VehicleType"> | string
-  insuranceValidity?: Prisma.BoolFilter<"VehicleType"> | boolean
   driverId?: Prisma.IntFilter<"VehicleType"> | number
   driver?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -259,7 +249,6 @@ export type VehicleTypeOrderByWithAggregationInput = {
   wheelers?: Prisma.SortOrder
   category?: Prisma.SortOrder
   brand?: Prisma.SortOrder
-  insuranceValidity?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
   _count?: Prisma.VehicleTypeCountOrderByAggregateInput
   _avg?: Prisma.VehicleTypeAvgOrderByAggregateInput
@@ -276,7 +265,6 @@ export type VehicleTypeScalarWhereWithAggregatesInput = {
   wheelers?: Prisma.EnumVehicleWheelWithAggregatesFilter<"VehicleType"> | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryWithAggregatesFilter<"VehicleType"> | $Enums.VehicleCategory
   brand?: Prisma.StringWithAggregatesFilter<"VehicleType"> | string
-  insuranceValidity?: Prisma.BoolWithAggregatesFilter<"VehicleType"> | boolean
   driverId?: Prisma.IntWithAggregatesFilter<"VehicleType"> | number
 }
 
@@ -284,7 +272,6 @@ export type VehicleTypeCreateInput = {
   wheelers: $Enums.VehicleWheel
   category: $Enums.VehicleCategory
   brand: string
-  insuranceValidity: boolean
   driver: Prisma.UserCreateNestedOneWithoutVechileTypeInput
 }
 
@@ -293,7 +280,6 @@ export type VehicleTypeUncheckedCreateInput = {
   wheelers: $Enums.VehicleWheel
   category: $Enums.VehicleCategory
   brand: string
-  insuranceValidity: boolean
   driverId: number
 }
 
@@ -301,7 +287,6 @@ export type VehicleTypeUpdateInput = {
   wheelers?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   brand?: Prisma.StringFieldUpdateOperationsInput | string
-  insuranceValidity?: Prisma.BoolFieldUpdateOperationsInput | boolean
   driver?: Prisma.UserUpdateOneRequiredWithoutVechileTypeNestedInput
 }
 
@@ -310,7 +295,6 @@ export type VehicleTypeUncheckedUpdateInput = {
   wheelers?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   brand?: Prisma.StringFieldUpdateOperationsInput | string
-  insuranceValidity?: Prisma.BoolFieldUpdateOperationsInput | boolean
   driverId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -319,7 +303,6 @@ export type VehicleTypeCreateManyInput = {
   wheelers: $Enums.VehicleWheel
   category: $Enums.VehicleCategory
   brand: string
-  insuranceValidity: boolean
   driverId: number
 }
 
@@ -327,7 +310,6 @@ export type VehicleTypeUpdateManyMutationInput = {
   wheelers?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   brand?: Prisma.StringFieldUpdateOperationsInput | string
-  insuranceValidity?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleTypeUncheckedUpdateManyInput = {
@@ -335,7 +317,6 @@ export type VehicleTypeUncheckedUpdateManyInput = {
   wheelers?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   brand?: Prisma.StringFieldUpdateOperationsInput | string
-  insuranceValidity?: Prisma.BoolFieldUpdateOperationsInput | boolean
   driverId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -354,7 +335,6 @@ export type VehicleTypeCountOrderByAggregateInput = {
   wheelers?: Prisma.SortOrder
   category?: Prisma.SortOrder
   brand?: Prisma.SortOrder
-  insuranceValidity?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
 }
 
@@ -368,7 +348,6 @@ export type VehicleTypeMaxOrderByAggregateInput = {
   wheelers?: Prisma.SortOrder
   category?: Prisma.SortOrder
   brand?: Prisma.SortOrder
-  insuranceValidity?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
 }
 
@@ -377,7 +356,6 @@ export type VehicleTypeMinOrderByAggregateInput = {
   wheelers?: Prisma.SortOrder
   category?: Prisma.SortOrder
   brand?: Prisma.SortOrder
-  insuranceValidity?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
 }
 
@@ -436,7 +414,6 @@ export type VehicleTypeCreateWithoutDriverInput = {
   wheelers: $Enums.VehicleWheel
   category: $Enums.VehicleCategory
   brand: string
-  insuranceValidity: boolean
 }
 
 export type VehicleTypeUncheckedCreateWithoutDriverInput = {
@@ -444,7 +421,6 @@ export type VehicleTypeUncheckedCreateWithoutDriverInput = {
   wheelers: $Enums.VehicleWheel
   category: $Enums.VehicleCategory
   brand: string
-  insuranceValidity: boolean
 }
 
 export type VehicleTypeCreateOrConnectWithoutDriverInput = {
@@ -481,7 +457,6 @@ export type VehicleTypeScalarWhereInput = {
   wheelers?: Prisma.EnumVehicleWheelFilter<"VehicleType"> | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFilter<"VehicleType"> | $Enums.VehicleCategory
   brand?: Prisma.StringFilter<"VehicleType"> | string
-  insuranceValidity?: Prisma.BoolFilter<"VehicleType"> | boolean
   driverId?: Prisma.IntFilter<"VehicleType"> | number
 }
 
@@ -490,14 +465,12 @@ export type VehicleTypeCreateManyDriverInput = {
   wheelers: $Enums.VehicleWheel
   category: $Enums.VehicleCategory
   brand: string
-  insuranceValidity: boolean
 }
 
 export type VehicleTypeUpdateWithoutDriverInput = {
   wheelers?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   brand?: Prisma.StringFieldUpdateOperationsInput | string
-  insuranceValidity?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleTypeUncheckedUpdateWithoutDriverInput = {
@@ -505,7 +478,6 @@ export type VehicleTypeUncheckedUpdateWithoutDriverInput = {
   wheelers?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   brand?: Prisma.StringFieldUpdateOperationsInput | string
-  insuranceValidity?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleTypeUncheckedUpdateManyWithoutDriverInput = {
@@ -513,7 +485,6 @@ export type VehicleTypeUncheckedUpdateManyWithoutDriverInput = {
   wheelers?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   category?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   brand?: Prisma.StringFieldUpdateOperationsInput | string
-  insuranceValidity?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -523,7 +494,6 @@ export type VehicleTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   wheelers?: boolean
   category?: boolean
   brand?: boolean
-  insuranceValidity?: boolean
   driverId?: boolean
   driver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleType"]>
@@ -533,7 +503,6 @@ export type VehicleTypeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   wheelers?: boolean
   category?: boolean
   brand?: boolean
-  insuranceValidity?: boolean
   driverId?: boolean
   driver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleType"]>
@@ -543,7 +512,6 @@ export type VehicleTypeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   wheelers?: boolean
   category?: boolean
   brand?: boolean
-  insuranceValidity?: boolean
   driverId?: boolean
   driver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleType"]>
@@ -553,11 +521,10 @@ export type VehicleTypeSelectScalar = {
   wheelers?: boolean
   category?: boolean
   brand?: boolean
-  insuranceValidity?: boolean
   driverId?: boolean
 }
 
-export type VehicleTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "wheelers" | "category" | "brand" | "insuranceValidity" | "driverId", ExtArgs["result"]["vehicleType"]>
+export type VehicleTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "wheelers" | "category" | "brand" | "driverId", ExtArgs["result"]["vehicleType"]>
 export type VehicleTypeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   driver?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -578,7 +545,6 @@ export type $VehicleTypePayload<ExtArgs extends runtime.Types.Extensions.Interna
     wheelers: $Enums.VehicleWheel
     category: $Enums.VehicleCategory
     brand: string
-    insuranceValidity: boolean
     driverId: number
   }, ExtArgs["result"]["vehicleType"]>
   composites: {}
@@ -1008,7 +974,6 @@ export interface VehicleTypeFieldRefs {
   readonly wheelers: Prisma.FieldRef<"VehicleType", 'VehicleWheel'>
   readonly category: Prisma.FieldRef<"VehicleType", 'VehicleCategory'>
   readonly brand: Prisma.FieldRef<"VehicleType", 'String'>
-  readonly insuranceValidity: Prisma.FieldRef<"VehicleType", 'Boolean'>
   readonly driverId: Prisma.FieldRef<"VehicleType", 'Int'>
 }
     

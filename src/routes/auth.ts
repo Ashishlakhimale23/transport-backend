@@ -10,11 +10,11 @@ router.post(
   '/register',
   [
     body('email').isEmail(),
-    body('username').isLength({ min: 3, max: 25 }),
     body('password').isLength({ min: 6 }),
     body('role').isIn(['admin', 'contractor', 'driver']),
-    body('contact').isInt(),
-    body('regularPracticeLocation').notEmpty(),
+    body('username').if((value, { req }) => req.body.role !== 'admin').isLength({ min: 3, max: 25 }),
+    body('contact').if((value, { req }) => req.body.role !== 'admin').isInt(),
+    body('regularPracticeLocation').if((value, { req }) => req.body.role !== 'admin').notEmpty(),
     validate
   ],
   register

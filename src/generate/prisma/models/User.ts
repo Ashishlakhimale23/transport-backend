@@ -28,12 +28,10 @@ export type AggregateUser = {
 
 export type UserAvgAggregateOutputType = {
   id: number | null
-  rating: number | null
 }
 
 export type UserSumAggregateOutputType = {
   id: number | null
-  rating: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -44,7 +42,6 @@ export type UserMinAggregateOutputType = {
   password: string | null
   contact: string | null
   regularPracticeLocation: string | null
-  rating: number | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -55,7 +52,6 @@ export type UserMaxAggregateOutputType = {
   password: string | null
   contact: string | null
   regularPracticeLocation: string | null
-  rating: number | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -66,19 +62,16 @@ export type UserCountAggregateOutputType = {
   password: number
   contact: number
   regularPracticeLocation: number
-  rating: number
   _all: number
 }
 
 
 export type UserAvgAggregateInputType = {
   id?: true
-  rating?: true
 }
 
 export type UserSumAggregateInputType = {
   id?: true
-  rating?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -89,7 +82,6 @@ export type UserMinAggregateInputType = {
   password?: true
   contact?: true
   regularPracticeLocation?: true
-  rating?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -100,7 +92,6 @@ export type UserMaxAggregateInputType = {
   password?: true
   contact?: true
   regularPracticeLocation?: true
-  rating?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -111,7 +102,6 @@ export type UserCountAggregateInputType = {
   password?: true
   contact?: true
   regularPracticeLocation?: true
-  rating?: true
   _all?: true
 }
 
@@ -209,7 +199,6 @@ export type UserGroupByOutputType = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating: number | null
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -243,11 +232,12 @@ export type UserWhereInput = {
   password?: Prisma.StringFilter<"User"> | string
   contact?: Prisma.StringFilter<"User"> | string
   regularPracticeLocation?: Prisma.StringFilter<"User"> | string
-  rating?: Prisma.FloatNullableFilter<"User"> | number | null
   vechileType?: Prisma.VehicleTypeListRelationFilter
   contractsCreated?: Prisma.ContractListRelationFilter
   contractsCarried?: Prisma.ContractListRelationFilter
   bids?: Prisma.BidListRelationFilter
+  givenRatings?: Prisma.RatingListRelationFilter
+  receivedRatings?: Prisma.RatingListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -258,11 +248,12 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
-  rating?: Prisma.SortOrderInput | Prisma.SortOrder
   vechileType?: Prisma.VehicleTypeOrderByRelationAggregateInput
   contractsCreated?: Prisma.ContractOrderByRelationAggregateInput
   contractsCarried?: Prisma.ContractOrderByRelationAggregateInput
   bids?: Prisma.BidOrderByRelationAggregateInput
+  givenRatings?: Prisma.RatingOrderByRelationAggregateInput
+  receivedRatings?: Prisma.RatingOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -276,11 +267,12 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringFilter<"User"> | string
   contact?: Prisma.StringFilter<"User"> | string
   regularPracticeLocation?: Prisma.StringFilter<"User"> | string
-  rating?: Prisma.FloatNullableFilter<"User"> | number | null
   vechileType?: Prisma.VehicleTypeListRelationFilter
   contractsCreated?: Prisma.ContractListRelationFilter
   contractsCarried?: Prisma.ContractListRelationFilter
   bids?: Prisma.BidListRelationFilter
+  givenRatings?: Prisma.RatingListRelationFilter
+  receivedRatings?: Prisma.RatingListRelationFilter
 }, "id">
 
 export type UserOrderByWithAggregationInput = {
@@ -291,7 +283,6 @@ export type UserOrderByWithAggregationInput = {
   password?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
-  rating?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -310,7 +301,6 @@ export type UserScalarWhereWithAggregatesInput = {
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   contact?: Prisma.StringWithAggregatesFilter<"User"> | string
   regularPracticeLocation?: Prisma.StringWithAggregatesFilter<"User"> | string
-  rating?: Prisma.FloatNullableWithAggregatesFilter<"User"> | number | null
 }
 
 export type UserCreateInput = {
@@ -320,11 +310,12 @@ export type UserCreateInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
   contractsCreated?: Prisma.ContractCreateNestedManyWithoutContractorInput
   contractsCarried?: Prisma.ContractCreateNestedManyWithoutGoodsCarrierInput
   bids?: Prisma.BidCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -335,11 +326,12 @@ export type UserUncheckedCreateInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
   contractsCreated?: Prisma.ContractUncheckedCreateNestedManyWithoutContractorInput
   contractsCarried?: Prisma.ContractUncheckedCreateNestedManyWithoutGoodsCarrierInput
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserUpdateInput = {
@@ -349,11 +341,12 @@ export type UserUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
   contractsCreated?: Prisma.ContractUpdateManyWithoutContractorNestedInput
   contractsCarried?: Prisma.ContractUpdateManyWithoutGoodsCarrierNestedInput
   bids?: Prisma.BidUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -364,11 +357,12 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
   contractsCreated?: Prisma.ContractUncheckedUpdateManyWithoutContractorNestedInput
   contractsCarried?: Prisma.ContractUncheckedUpdateManyWithoutGoodsCarrierNestedInput
   bids?: Prisma.BidUncheckedUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUncheckedUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -379,7 +373,6 @@ export type UserCreateManyInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -389,7 +382,6 @@ export type UserUpdateManyMutationInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -400,7 +392,6 @@ export type UserUncheckedUpdateManyInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -411,12 +402,10 @@ export type UserCountOrderByAggregateInput = {
   password?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -427,7 +416,6 @@ export type UserMaxOrderByAggregateInput = {
   password?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -438,12 +426,10 @@ export type UserMinOrderByAggregateInput = {
   password?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -462,14 +448,6 @@ export type StringFieldUpdateOperationsInput = {
 
 export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole
-}
-
-export type NullableFloatFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -538,6 +516,34 @@ export type UserUpdateOneRequiredWithoutVechileTypeNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVechileTypeInput, Prisma.UserUpdateWithoutVechileTypeInput>, Prisma.UserUncheckedUpdateWithoutVechileTypeInput>
 }
 
+export type UserCreateNestedOneWithoutGivenRatingsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGivenRatingsInput, Prisma.UserUncheckedCreateWithoutGivenRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGivenRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutReceivedRatingsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedRatingsInput, Prisma.UserUncheckedCreateWithoutReceivedRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutGivenRatingsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGivenRatingsInput, Prisma.UserUncheckedCreateWithoutGivenRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGivenRatingsInput
+  upsert?: Prisma.UserUpsertWithoutGivenRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutGivenRatingsInput, Prisma.UserUpdateWithoutGivenRatingsInput>, Prisma.UserUncheckedUpdateWithoutGivenRatingsInput>
+}
+
+export type UserUpdateOneRequiredWithoutReceivedRatingsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedRatingsInput, Prisma.UserUncheckedCreateWithoutReceivedRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedRatingsInput
+  upsert?: Prisma.UserUpsertWithoutReceivedRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReceivedRatingsInput, Prisma.UserUpdateWithoutReceivedRatingsInput>, Prisma.UserUncheckedUpdateWithoutReceivedRatingsInput>
+}
+
 export type UserCreateWithoutContractsCreatedInput = {
   email: string
   username: string
@@ -545,10 +551,11 @@ export type UserCreateWithoutContractsCreatedInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
   contractsCarried?: Prisma.ContractCreateNestedManyWithoutGoodsCarrierInput
   bids?: Prisma.BidCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserUncheckedCreateWithoutContractsCreatedInput = {
@@ -559,10 +566,11 @@ export type UserUncheckedCreateWithoutContractsCreatedInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
   contractsCarried?: Prisma.ContractUncheckedCreateNestedManyWithoutGoodsCarrierInput
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserCreateOrConnectWithoutContractsCreatedInput = {
@@ -577,10 +585,11 @@ export type UserCreateWithoutContractsCarriedInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
   contractsCreated?: Prisma.ContractCreateNestedManyWithoutContractorInput
   bids?: Prisma.BidCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserUncheckedCreateWithoutContractsCarriedInput = {
@@ -591,10 +600,11 @@ export type UserUncheckedCreateWithoutContractsCarriedInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
   contractsCreated?: Prisma.ContractUncheckedCreateNestedManyWithoutContractorInput
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserCreateOrConnectWithoutContractsCarriedInput = {
@@ -620,10 +630,11 @@ export type UserUpdateWithoutContractsCreatedInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
   contractsCarried?: Prisma.ContractUpdateManyWithoutGoodsCarrierNestedInput
   bids?: Prisma.BidUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutContractsCreatedInput = {
@@ -634,10 +645,11 @@ export type UserUncheckedUpdateWithoutContractsCreatedInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
   contractsCarried?: Prisma.ContractUncheckedUpdateManyWithoutGoodsCarrierNestedInput
   bids?: Prisma.BidUncheckedUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUncheckedUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserUpsertWithoutContractsCarriedInput = {
@@ -658,10 +670,11 @@ export type UserUpdateWithoutContractsCarriedInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
   contractsCreated?: Prisma.ContractUpdateManyWithoutContractorNestedInput
   bids?: Prisma.BidUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutContractsCarriedInput = {
@@ -672,10 +685,11 @@ export type UserUncheckedUpdateWithoutContractsCarriedInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
   contractsCreated?: Prisma.ContractUncheckedUpdateManyWithoutContractorNestedInput
   bids?: Prisma.BidUncheckedUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUncheckedUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserCreateWithoutBidsInput = {
@@ -685,10 +699,11 @@ export type UserCreateWithoutBidsInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
   contractsCreated?: Prisma.ContractCreateNestedManyWithoutContractorInput
   contractsCarried?: Prisma.ContractCreateNestedManyWithoutGoodsCarrierInput
+  givenRatings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserUncheckedCreateWithoutBidsInput = {
@@ -699,10 +714,11 @@ export type UserUncheckedCreateWithoutBidsInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
   contractsCreated?: Prisma.ContractUncheckedCreateNestedManyWithoutContractorInput
   contractsCarried?: Prisma.ContractUncheckedCreateNestedManyWithoutGoodsCarrierInput
+  givenRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserCreateOrConnectWithoutBidsInput = {
@@ -728,10 +744,11 @@ export type UserUpdateWithoutBidsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
   contractsCreated?: Prisma.ContractUpdateManyWithoutContractorNestedInput
   contractsCarried?: Prisma.ContractUpdateManyWithoutGoodsCarrierNestedInput
+  givenRatings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBidsInput = {
@@ -742,10 +759,11 @@ export type UserUncheckedUpdateWithoutBidsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
   contractsCreated?: Prisma.ContractUncheckedUpdateManyWithoutContractorNestedInput
   contractsCarried?: Prisma.ContractUncheckedUpdateManyWithoutGoodsCarrierNestedInput
+  givenRatings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUncheckedUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserCreateWithoutVechileTypeInput = {
@@ -755,10 +773,11 @@ export type UserCreateWithoutVechileTypeInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   contractsCreated?: Prisma.ContractCreateNestedManyWithoutContractorInput
   contractsCarried?: Prisma.ContractCreateNestedManyWithoutGoodsCarrierInput
   bids?: Prisma.BidCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserUncheckedCreateWithoutVechileTypeInput = {
@@ -769,10 +788,11 @@ export type UserUncheckedCreateWithoutVechileTypeInput = {
   password: string
   contact: string
   regularPracticeLocation: string
-  rating?: number | null
   contractsCreated?: Prisma.ContractUncheckedCreateNestedManyWithoutContractorInput
   contractsCarried?: Prisma.ContractUncheckedCreateNestedManyWithoutGoodsCarrierInput
   bids?: Prisma.BidUncheckedCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+  receivedRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedUserInput
 }
 
 export type UserCreateOrConnectWithoutVechileTypeInput = {
@@ -798,10 +818,11 @@ export type UserUpdateWithoutVechileTypeInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   contractsCreated?: Prisma.ContractUpdateManyWithoutContractorNestedInput
   contractsCarried?: Prisma.ContractUpdateManyWithoutGoodsCarrierNestedInput
   bids?: Prisma.BidUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUpdateManyWithoutRatedUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVechileTypeInput = {
@@ -812,10 +833,159 @@ export type UserUncheckedUpdateWithoutVechileTypeInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   contractsCreated?: Prisma.ContractUncheckedUpdateManyWithoutContractorNestedInput
   contractsCarried?: Prisma.ContractUncheckedUpdateManyWithoutGoodsCarrierNestedInput
   bids?: Prisma.BidUncheckedUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
+  receivedRatings?: Prisma.RatingUncheckedUpdateManyWithoutRatedUserNestedInput
+}
+
+export type UserCreateWithoutGivenRatingsInput = {
+  email: string
+  username: string
+  role: $Enums.UserRole
+  password: string
+  contact: string
+  regularPracticeLocation: string
+  vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
+  contractsCreated?: Prisma.ContractCreateNestedManyWithoutContractorInput
+  contractsCarried?: Prisma.ContractCreateNestedManyWithoutGoodsCarrierInput
+  bids?: Prisma.BidCreateNestedManyWithoutUserInput
+  receivedRatings?: Prisma.RatingCreateNestedManyWithoutRatedUserInput
+}
+
+export type UserUncheckedCreateWithoutGivenRatingsInput = {
+  id?: number
+  email: string
+  username: string
+  role: $Enums.UserRole
+  password: string
+  contact: string
+  regularPracticeLocation: string
+  vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
+  contractsCreated?: Prisma.ContractUncheckedCreateNestedManyWithoutContractorInput
+  contractsCarried?: Prisma.ContractUncheckedCreateNestedManyWithoutGoodsCarrierInput
+  bids?: Prisma.BidUncheckedCreateNestedManyWithoutUserInput
+  receivedRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRatedUserInput
+}
+
+export type UserCreateOrConnectWithoutGivenRatingsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutGivenRatingsInput, Prisma.UserUncheckedCreateWithoutGivenRatingsInput>
+}
+
+export type UserCreateWithoutReceivedRatingsInput = {
+  email: string
+  username: string
+  role: $Enums.UserRole
+  password: string
+  contact: string
+  regularPracticeLocation: string
+  vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
+  contractsCreated?: Prisma.ContractCreateNestedManyWithoutContractorInput
+  contractsCarried?: Prisma.ContractCreateNestedManyWithoutGoodsCarrierInput
+  bids?: Prisma.BidCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingCreateNestedManyWithoutRaterInput
+}
+
+export type UserUncheckedCreateWithoutReceivedRatingsInput = {
+  id?: number
+  email: string
+  username: string
+  role: $Enums.UserRole
+  password: string
+  contact: string
+  regularPracticeLocation: string
+  vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
+  contractsCreated?: Prisma.ContractUncheckedCreateNestedManyWithoutContractorInput
+  contractsCarried?: Prisma.ContractUncheckedCreateNestedManyWithoutGoodsCarrierInput
+  bids?: Prisma.BidUncheckedCreateNestedManyWithoutUserInput
+  givenRatings?: Prisma.RatingUncheckedCreateNestedManyWithoutRaterInput
+}
+
+export type UserCreateOrConnectWithoutReceivedRatingsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedRatingsInput, Prisma.UserUncheckedCreateWithoutReceivedRatingsInput>
+}
+
+export type UserUpsertWithoutGivenRatingsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutGivenRatingsInput, Prisma.UserUncheckedUpdateWithoutGivenRatingsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutGivenRatingsInput, Prisma.UserUncheckedCreateWithoutGivenRatingsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutGivenRatingsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutGivenRatingsInput, Prisma.UserUncheckedUpdateWithoutGivenRatingsInput>
+}
+
+export type UserUpdateWithoutGivenRatingsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  contact?: Prisma.StringFieldUpdateOperationsInput | string
+  regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
+  contractsCreated?: Prisma.ContractUpdateManyWithoutContractorNestedInput
+  contractsCarried?: Prisma.ContractUpdateManyWithoutGoodsCarrierNestedInput
+  bids?: Prisma.BidUpdateManyWithoutUserNestedInput
+  receivedRatings?: Prisma.RatingUpdateManyWithoutRatedUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutGivenRatingsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  contact?: Prisma.StringFieldUpdateOperationsInput | string
+  regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
+  contractsCreated?: Prisma.ContractUncheckedUpdateManyWithoutContractorNestedInput
+  contractsCarried?: Prisma.ContractUncheckedUpdateManyWithoutGoodsCarrierNestedInput
+  bids?: Prisma.BidUncheckedUpdateManyWithoutUserNestedInput
+  receivedRatings?: Prisma.RatingUncheckedUpdateManyWithoutRatedUserNestedInput
+}
+
+export type UserUpsertWithoutReceivedRatingsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReceivedRatingsInput, Prisma.UserUncheckedUpdateWithoutReceivedRatingsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedRatingsInput, Prisma.UserUncheckedCreateWithoutReceivedRatingsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReceivedRatingsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReceivedRatingsInput, Prisma.UserUncheckedUpdateWithoutReceivedRatingsInput>
+}
+
+export type UserUpdateWithoutReceivedRatingsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  contact?: Prisma.StringFieldUpdateOperationsInput | string
+  regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
+  contractsCreated?: Prisma.ContractUpdateManyWithoutContractorNestedInput
+  contractsCarried?: Prisma.ContractUpdateManyWithoutGoodsCarrierNestedInput
+  bids?: Prisma.BidUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUpdateManyWithoutRaterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReceivedRatingsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  contact?: Prisma.StringFieldUpdateOperationsInput | string
+  regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
+  vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
+  contractsCreated?: Prisma.ContractUncheckedUpdateManyWithoutContractorNestedInput
+  contractsCarried?: Prisma.ContractUncheckedUpdateManyWithoutGoodsCarrierNestedInput
+  bids?: Prisma.BidUncheckedUpdateManyWithoutUserNestedInput
+  givenRatings?: Prisma.RatingUncheckedUpdateManyWithoutRaterNestedInput
 }
 
 
@@ -828,6 +998,8 @@ export type UserCountOutputType = {
   contractsCreated: number
   contractsCarried: number
   bids: number
+  givenRatings: number
+  receivedRatings: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -835,6 +1007,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   contractsCreated?: boolean | UserCountOutputTypeCountContractsCreatedArgs
   contractsCarried?: boolean | UserCountOutputTypeCountContractsCarriedArgs
   bids?: boolean | UserCountOutputTypeCountBidsArgs
+  givenRatings?: boolean | UserCountOutputTypeCountGivenRatingsArgs
+  receivedRatings?: boolean | UserCountOutputTypeCountReceivedRatingsArgs
 }
 
 /**
@@ -875,6 +1049,20 @@ export type UserCountOutputTypeCountBidsArgs<ExtArgs extends runtime.Types.Exten
   where?: Prisma.BidWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountGivenRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RatingWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReceivedRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RatingWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -884,11 +1072,12 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   password?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
-  rating?: boolean
   vechileType?: boolean | Prisma.User$vechileTypeArgs<ExtArgs>
   contractsCreated?: boolean | Prisma.User$contractsCreatedArgs<ExtArgs>
   contractsCarried?: boolean | Prisma.User$contractsCarriedArgs<ExtArgs>
   bids?: boolean | Prisma.User$bidsArgs<ExtArgs>
+  givenRatings?: boolean | Prisma.User$givenRatingsArgs<ExtArgs>
+  receivedRatings?: boolean | Prisma.User$receivedRatingsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -900,7 +1089,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
-  rating?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -911,7 +1099,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
-  rating?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -922,15 +1109,16 @@ export type UserSelectScalar = {
   password?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
-  rating?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "role" | "password" | "contact" | "regularPracticeLocation" | "rating", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "role" | "password" | "contact" | "regularPracticeLocation", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vechileType?: boolean | Prisma.User$vechileTypeArgs<ExtArgs>
   contractsCreated?: boolean | Prisma.User$contractsCreatedArgs<ExtArgs>
   contractsCarried?: boolean | Prisma.User$contractsCarriedArgs<ExtArgs>
   bids?: boolean | Prisma.User$bidsArgs<ExtArgs>
+  givenRatings?: boolean | Prisma.User$givenRatingsArgs<ExtArgs>
+  receivedRatings?: boolean | Prisma.User$receivedRatingsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -943,6 +1131,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     contractsCreated: Prisma.$ContractPayload<ExtArgs>[]
     contractsCarried: Prisma.$ContractPayload<ExtArgs>[]
     bids: Prisma.$BidPayload<ExtArgs>[]
+    givenRatings: Prisma.$RatingPayload<ExtArgs>[]
+    receivedRatings: Prisma.$RatingPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -952,7 +1142,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string
     contact: string
     regularPracticeLocation: string
-    rating: number | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1351,6 +1540,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   contractsCreated<T extends Prisma.User$contractsCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contractsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContractPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   contractsCarried<T extends Prisma.User$contractsCarriedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contractsCarriedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContractPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bids<T extends Prisma.User$bidsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bidsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  givenRatings<T extends Prisma.User$givenRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$givenRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  receivedRatings<T extends Prisma.User$receivedRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1387,7 +1578,6 @@ export interface UserFieldRefs {
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly contact: Prisma.FieldRef<"User", 'String'>
   readonly regularPracticeLocation: Prisma.FieldRef<"User", 'String'>
-  readonly rating: Prisma.FieldRef<"User", 'Float'>
 }
     
 
@@ -1869,6 +2059,54 @@ export type User$bidsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   take?: number
   skip?: number
   distinct?: Prisma.BidScalarFieldEnum | Prisma.BidScalarFieldEnum[]
+}
+
+/**
+ * User.givenRatings
+ */
+export type User$givenRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Rating
+   */
+  select?: Prisma.RatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Rating
+   */
+  omit?: Prisma.RatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RatingInclude<ExtArgs> | null
+  where?: Prisma.RatingWhereInput
+  orderBy?: Prisma.RatingOrderByWithRelationInput | Prisma.RatingOrderByWithRelationInput[]
+  cursor?: Prisma.RatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RatingScalarFieldEnum | Prisma.RatingScalarFieldEnum[]
+}
+
+/**
+ * User.receivedRatings
+ */
+export type User$receivedRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Rating
+   */
+  select?: Prisma.RatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Rating
+   */
+  omit?: Prisma.RatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RatingInclude<ExtArgs> | null
+  where?: Prisma.RatingWhereInput
+  orderBy?: Prisma.RatingOrderByWithRelationInput | Prisma.RatingOrderByWithRelationInput[]
+  cursor?: Prisma.RatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RatingScalarFieldEnum | Prisma.RatingScalarFieldEnum[]
 }
 
 /**

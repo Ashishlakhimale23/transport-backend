@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import { body, query } from 'express-validator';
+import { body, query, param } from 'express-validator';
 import {
   getAllUsers,
   getUserById,
-  updateUserRating,
-  deleteUser
+  deleteUser,
+  submitRating,
+  getUserRatings
 } from '../controller/user';
 import { authenticate, authorize } from '../middleware/auth';
 import { validate } from '../middleware/validation';
@@ -24,6 +25,7 @@ router.get(
 
 router.get('/:id', authenticate, getUserById);
 
+/**
 router.put(
   '/:id/rating',
   authenticate,
@@ -33,6 +35,21 @@ router.put(
   ],
   updateUserRating
 );
+*/
+
+router.post(
+  '/submit-rating',
+  authenticate,
+  [
+    body('ratedUserId').isInt(),
+    body('contractId').isInt(),
+    body('value').isInt({ min: 1, max: 5 }).withMessage('Rating must be between 1 and 5'),
+    validate
+  ],
+  submitRating
+);
+
+router.get('/ratings/:userId', authenticate, getUserRatings);
 
 router.delete('/:id', authenticate, authorize(UserRole.ADMIN), deleteUser);
 

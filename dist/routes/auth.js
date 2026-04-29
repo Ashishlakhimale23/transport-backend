@@ -8,11 +8,11 @@ const validation_1 = require("../middleware/validation");
 const router = (0, express_1.Router)();
 router.post('/register', [
     (0, express_validator_1.body)('email').isEmail(),
-    (0, express_validator_1.body)('username').isLength({ min: 3, max: 25 }),
     (0, express_validator_1.body)('password').isLength({ min: 6 }),
     (0, express_validator_1.body)('role').isIn(['admin', 'contractor', 'driver']),
-    (0, express_validator_1.body)('contact').isInt(),
-    (0, express_validator_1.body)('regularPracticeLocation').notEmpty(),
+    (0, express_validator_1.body)('username').if((value, { req }) => req.body.role !== 'admin').isLength({ min: 3, max: 25 }),
+    (0, express_validator_1.body)('contact').if((value, { req }) => req.body.role !== 'admin').isInt(),
+    (0, express_validator_1.body)('regularPracticeLocation').if((value, { req }) => req.body.role !== 'admin').notEmpty(),
     validation_1.validate
 ], auth_1.register);
 router.post('/login', [

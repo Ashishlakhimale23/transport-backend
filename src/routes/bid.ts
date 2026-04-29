@@ -5,11 +5,14 @@ import {
   getBidsByContract,
   getMyBids,
   updateBid,
-  deleteBid
+  deleteBid,
+  pendingBids,
+  approve
 } from '../controller/bid';
 import { authenticate, authorize } from '../middleware/auth';
 import { validate } from '../middleware/validation';
 import { UserRole } from '../utils/types';
+import { reject } from 'lodash';
 
 const router = Router();
 
@@ -63,5 +66,23 @@ router.delete(
   ],
   deleteBid
 );
+
+router.get("/admin/pending-bids",
+  authenticate,
+  authorize(UserRole.ADMIN),
+  pendingBids
+)
+
+router.put("/admin/:id/approve",
+  authenticate,
+  authorize(UserRole.ADMIN),
+  approve
+)
+
+router.put("/admin/reject",
+  authenticate,
+  authorize(UserRole.ADMIN),
+  reject
+)
 
 export default router;

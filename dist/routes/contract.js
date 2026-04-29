@@ -17,6 +17,7 @@ router.post('/', auth_1.authenticate, (0, auth_1.authorize)(types_1.UserRole.CON
     (0, express_validator_1.body)('typeOfVehicle').isIn(['V4', 'V6', 'V10', 'V12']),
     (0, express_validator_1.body)('insured').isBoolean(),
     (0, express_validator_1.body)('type').isIn(['HANDLE_WITH_CARE', 'AUTOMOBILE']),
+    (0, express_validator_1.body)('description'),
     validation_1.validate
 ], contract_1.createContract);
 router.get('/', auth_1.authenticate, [
@@ -44,5 +45,9 @@ router.post('/:id/assign', auth_1.authenticate, (0, auth_1.authorize)(types_1.Us
     (0, express_validator_1.body)('winningPrice').isInt({ min: 0 }),
     validation_1.validate
 ], contract_1.assignContract);
+router.put('/:id/confirm-delivery', auth_1.authenticate, (0, auth_1.authorize)(types_1.UserRole.DRIVER), [
+    (0, express_validator_1.body)('deliverableNotes').optional().isString(),
+    validation_1.validate
+], contract_1.confirmDelivery);
 exports.default = router;
 //# sourceMappingURL=contract.js.map

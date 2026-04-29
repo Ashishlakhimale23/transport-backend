@@ -7,7 +7,8 @@ import {
   updateContract,
   deleteContract,
   assignContract,
-  getMyContracts
+  getMyContracts,
+  confirmDelivery
 } from '../controller/contract';
 import { authenticate, authorize } from '../middleware/auth';
 import { validate } from '../middleware/validation';
@@ -29,6 +30,7 @@ router.post(
     body('typeOfVehicle').isIn(['V4', 'V6', 'V10', 'V12']),
     body('insured').isBoolean(),
     body('type').isIn(['HANDLE_WITH_CARE', 'AUTOMOBILE']),
+    body('description'),
     validate
   ],
   createContract
@@ -80,6 +82,17 @@ router.post(
     validate
   ],
   assignContract
+);
+
+router.put(
+  '/:id/confirm-delivery',
+  authenticate,
+  authorize(UserRole.DRIVER),
+  [
+    body('deliverableNotes').optional().isString(),
+    validate
+  ],
+  confirmDelivery
 );
 
 export default router;

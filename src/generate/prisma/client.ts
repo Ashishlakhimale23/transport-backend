@@ -58,7 +58,7 @@ export type Bid = Prisma.BidModel
  */
 export type VehicleType = Prisma.VehicleTypeModel
 /**
- * Model Insurance
+ * Model Rating
  * 
  */
-export type Insurance = Prisma.InsuranceModel
+export type Rating = Prisma.RatingModel

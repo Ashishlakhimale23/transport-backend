@@ -6,6 +6,7 @@ const bid_1 = require("../controller/bid");
 const auth_1 = require("../middleware/auth");
 const validation_1 = require("../middleware/validation");
 const types_1 = require("../utils/types");
+const lodash_1 = require("lodash");
 const router = (0, express_1.Router)();
 router.post('/', auth_1.authenticate, (0, auth_1.authorize)(types_1.UserRole.DRIVER), [
     (0, express_validator_1.body)('contractId').isInt({ min: 1 }).withMessage('Valid contract ID is required'),
@@ -26,5 +27,8 @@ router.delete('/:id', auth_1.authenticate, [
     (0, express_validator_1.param)('id').isInt({ min: 1 }).withMessage('Valid bid ID is required'),
     validation_1.validate
 ], bid_1.deleteBid);
+router.get("/admin/pending-bids", auth_1.authenticate, (0, auth_1.authorize)(types_1.UserRole.ADMIN), bid_1.pendingBids);
+router.put("/admin/:id/approve", auth_1.authenticate, (0, auth_1.authorize)(types_1.UserRole.ADMIN), bid_1.approve);
+router.put("/admin/reject", auth_1.authenticate, (0, auth_1.authorize)(types_1.UserRole.ADMIN), lodash_1.reject);
 exports.default = router;
 //# sourceMappingURL=bid.js.map

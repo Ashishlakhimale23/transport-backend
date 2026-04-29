@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBid = exports.updateBid = exports.getMyBids = exports.getBidsByContract = exports.createBid = void 0;
+exports.reject = exports.approve = exports.pendingBids = exports.deleteBid = exports.updateBid = exports.getMyBids = exports.getBidsByContract = exports.createBid = void 0;
 const database_1 = require("../utils/database");
+const client_1 = require("../generate/prisma/client");
+const email_1 = require("../utils/email");
 const createBid = async (req, res) => {
     try {
         const { contractId, amount } = req.body;
@@ -30,22 +32,14 @@ const createBid = async (req, res) => {
             data: {
                 userId: req.user.id,
                 contractId,
-                amount
+                amount,
+                status: "pending"
             },
-            include: {
-                user: {
-                    select: {
-                        id: true,
-                        username: true,
-                        rating: true
-                    }
-                },
-                contract: true
-            }
         });
         res.status(201).json(bid);
     }
     catch (error) {
+        console.log(error);
         res.status(500).json({ error: 'Failed to create bid' });
     }
 };
@@ -164,4 +158,119 @@ const deleteBid = async (req, res) => {
     }
 };
 exports.deleteBid = deleteBid;
+const pendingBids = async (req, res) => {
+    try {
+        const bids = await database_1.prisma.bid.findMany({
+            where: {
+                status: client_1.Status_Mode.ADMIN_APPROVAL,
+            },
+            select: {
+                user: {
+                    select: {
+                        id: true,
+                        username: true,
+                        email: true
+                    }
+                },
+                contract: {
+                    select: {
+                        id: true,
+                        type: true,
+                        startLocation: true,
+                        endLocation: true,
+                        approxKms: true,
+                        weight: true,
+                        typeOfVehicle: true,
+                    }
+                },
+                createdAt: true,
+                amount: true,
+                id: true,
+                status: true
+            }
+        });
+        res.json({ data: bids });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "failed to fetch the pending bids" });
+    }
+};
+exports.pendingBids = pendingBids;
+const approve = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { goodsCarrierId, amount, contractId } = req.body;
+        const bid = await database_1.prisma.bid.findUnique({
+            where: { id: Number(id) },
+            include: {
+                user: {
+                    select: {
+                        id: true,
+                        username: true,
+                        email: true
+                    }
+                },
+                contract: {
+                    select: {
+                        id: true,
+                        startLocation: true,
+                        endLocation: true,
+                        approxKms: true,
+                        weight: true,
+                        typeOfVehicle: true
+                    }
+                }
+            }
+        });
+        if (!bid) {
+            return res.status(404).json({ error: 'Bid not found' });
+        }
+        const updateContract = await database_1.prisma.contract.update({
+            where: {
+                id: contractId
+            }, data: {
+                winningPrice: amount,
+                goodsCarrierId: goodsCarrierId
+            }
+        });
+        const updateBid = await database_1.prisma.bid.update({
+            where: {
+                id: Number(id)
+            },
+            data: {
+                status: client_1.Status_Mode.APPROVED
+            }
+        });
+        const emailTemplate = (0, email_1.getBidApprovalEmailTemplate)(bid.user.username, amount, bid.contract.id, bid.contract.startLocation, bid.contract.endLocation, bid.contract.approxKms, bid.contract.weight, bid.contract.typeOfVehicle);
+        await (0, email_1.sendEmail)({
+            to: bid.user.email,
+            subject: `Bid Approved! - Contract #${bid.contract.id}`,
+            html: emailTemplate
+        });
+        res.status(200).json({ success: true, message: "Bid approved and email sent to bidder" });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "failed to approve the bid" });
+    }
+};
+exports.approve = approve;
+const reject = async (req, res) => {
+    try {
+        const { bidId } = req.body;
+        const updateBid = await database_1.prisma.bid.update({
+            where: {
+                id: bidId
+            },
+            data: {
+                status: client_1.Status_Mode.PENDING
+            }
+        });
+    }
+    catch (error) {
+        res.status(500).json({ message: "failed to approve the bid" });
+    }
+};
+exports.reject = reject;
 //# sourceMappingURL=bid.js.map

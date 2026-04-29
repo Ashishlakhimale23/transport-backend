@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.InsuranceScalarFieldEnum = exports.VehicleTypeScalarFieldEnum = exports.BidScalarFieldEnum = exports.ContractScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.RatingScalarFieldEnum = exports.VehicleTypeScalarFieldEnum = exports.BidScalarFieldEnum = exports.ContractScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -49,7 +49,7 @@ exports.ModelName = {
     Contract: 'Contract',
     Bid: 'Bid',
     VehicleType: 'VehicleType',
-    Insurance: 'Insurance'
+    Rating: 'Rating'
 };
 exports.TransactionIsolationLevel = {
     ReadUncommitted: 'ReadUncommitted',
@@ -64,8 +64,7 @@ exports.UserScalarFieldEnum = {
     role: 'role',
     password: 'password',
     contact: 'contact',
-    regularPracticeLocation: 'regularPracticeLocation',
-    rating: 'rating'
+    regularPracticeLocation: 'regularPracticeLocation'
 };
 exports.ContractScalarFieldEnum = {
     id: 'id',
@@ -83,27 +82,34 @@ exports.ContractScalarFieldEnum = {
     type: 'type',
     createdAt: 'createdAt',
     description: 'description',
-    requirements: 'requirements'
+    requirements: 'requirements',
+    deliveryStatus: 'deliveryStatus',
+    deliveryConfirmedAt: 'deliveryConfirmedAt',
+    deliverableNotes: 'deliverableNotes'
 };
 exports.BidScalarFieldEnum = {
     id: 'id',
     userId: 'userId',
     contractId: 'contractId',
-    amount: 'amount'
+    amount: 'amount',
+    status: 'status',
+    createdAt: 'createdAt'
 };
 exports.VehicleTypeScalarFieldEnum = {
     id: 'id',
     wheelers: 'wheelers',
     category: 'category',
     brand: 'brand',
-    insuranceValidity: 'insuranceValidity',
     driverId: 'driverId'
 };
-exports.InsuranceScalarFieldEnum = {
+exports.RatingScalarFieldEnum = {
     id: 'id',
+    value: 'value',
+    comment: 'comment',
+    raterId: 'raterId',
+    ratedUserId: 'ratedUserId',
     contractId: 'contractId',
-    type: 'type',
-    premium: 'premium'
+    createdAt: 'createdAt'
 };
 exports.SortOrder = {
     asc: 'asc',
