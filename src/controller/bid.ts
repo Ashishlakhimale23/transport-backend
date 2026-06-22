@@ -238,7 +238,8 @@ export const approve = async (req:Request,res:Response) => {
           select: {
             id: true,
             username: true,
-            email: true
+            email: true,
+            upiID: true
           }
         },
         contract: {
@@ -286,7 +287,8 @@ export const approve = async (req:Request,res:Response) => {
       bid.contract.endLocation,
       bid.contract.approxKms,
       bid.contract.weight,
-      bid.contract.typeOfVehicle
+      bid.contract.typeOfVehicle,
+      bid.user.upiID || 'Not provided'
     );
 
     await sendEmail({

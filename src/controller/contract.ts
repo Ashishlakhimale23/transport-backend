@@ -350,7 +350,8 @@ export const confirmDelivery = async (req: Request, res: Response) => {
           select: {
             id: true,
             username: true,
-            email: true
+            email: true,
+            upiID: true
           }
         },
         contractor: {
@@ -409,7 +410,8 @@ export const confirmDelivery = async (req: Request, res: Response) => {
       contract.approxKms,
       contract.weight,
       contract.typeOfVehicle,
-      deliverableNotes || ''
+      deliverableNotes || '',
+      contract.goodsCarrier!.upiID || 'Not provided'
     );
 
     for (const admin of admins) {

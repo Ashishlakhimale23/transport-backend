@@ -25,7 +25,7 @@ interface EmailOptions {
 export const sendEmail = async (options: EmailOptions) => {
   try {
     const mailOptions = {
-      from: 'LoadTrust <noreply@hellooworld.xyz>',
+      from: 'BulkWay <noreply@hellooworld.xyz>',
       to: options.to,
       subject: options.subject,
       html: options.html,
@@ -49,7 +49,8 @@ export const getBidApprovalEmailTemplate = (
   endLocation: string,
   distance: number,
   weight: number,
-  vehicleType: string
+  vehicleType: string,
+  upiID: string,
 ) => {
   return `
     <!DOCTYPE html>
@@ -101,6 +102,10 @@ export const getBidApprovalEmailTemplate = (
             <span class="label">Vehicle Type:</span> ${vehicleType}
           </div>
 
+          <div class="detail-row">
+            <span class="label">UPI ID:</span> ${upiID}
+          </div>
+
           <p style="margin-top: 20px;">
             You can now proceed with the contract. Please login to your dashboard to view more details and track the shipment.
           </p>
@@ -132,7 +137,8 @@ export const getDeliveryConfirmationEmailTemplate = (
   distance: number,
   weight: number,
   vehicleType: string,
-  notes: string
+  notes: string,
+  upiID: string
 ) => {
   return `
     <!DOCTYPE html>
@@ -189,6 +195,10 @@ export const getDeliveryConfirmationEmailTemplate = (
             <span class="label">Delivery Notes:</span> ${notes}
           </div>
           ` : ''}
+
+          <div class="detail-row">
+            <span class="label">Driver UPI ID:</span> ${upiID}
+          </div>
 
           <div class="payment-section">
             <p style="margin: 0 0 10px 0;"><strong>💰 Payment Information</strong></p>

@@ -23,7 +23,7 @@ export const register = async (req: Request, res: Response) => {
           password: hashedPassword,
           role,
           username: "",
-          contact: "455445",
+          contact: "9561568505",
           regularPracticeLocation: ""
         },
         select: {
