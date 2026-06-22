@@ -8,7 +8,7 @@ const admin_email = process.env.ADMIN_EMAIL
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { email, username, password, role, contact, regularPracticeLocation } = req.body;
+    const { upiID,email, username, password, role, contact, regularPracticeLocation } = req.body;
     if (role == "admin" && email != admin_email) {
       return res.status(500).json({ error: 'Invalid admin email' });
     }
@@ -41,7 +41,9 @@ export const register = async (req: Request, res: Response) => {
           password: hashedPassword,
           role,
           contact,
-          regularPracticeLocation
+          regularPracticeLocation,
+          upiID
+
         },
         select: {
           id: true,

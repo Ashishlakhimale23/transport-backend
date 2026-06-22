@@ -42,8 +42,26 @@ export const getUserById = async (req: Request, res: Response) => {
         role: true,
         contact: true,
         regularPracticeLocation: true,
-        contractsCreated:true,
-        contractsCarried:true      
+        contractsCreated: true,
+        contractsCarried: {
+          where: {
+            deliveryStatus: 'DELIVERED'
+          }
+        },
+        receivedRatings: {
+          select: {
+            value: true,
+            comment: true,
+            createdAt: true,
+            rater: {
+              select: {
+                id: true,
+                username: true,
+                email: true
+              }
+            }
+          }
+        }
       }
     });
 
@@ -51,7 +69,15 @@ export const getUserById = async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    res.json(user);
+    const averageRating = user.receivedRatings.length > 0
+      ? user.receivedRatings.reduce((sum, r) => sum + r.value, 0) / user.receivedRatings.length
+      : null;
+
+    res.json({
+      ...user,
+      averageRating: averageRating ? parseFloat(averageRating.toFixed(2)) : null,
+      totalRatings: user.receivedRatings.length
+    });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch user' });
   }
@@ -149,10 +175,15 @@ export const submitRating = async (req: Request, res: Response) => {
 
 export const getUserRatings = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params;
+    const  userId  = req?.user?.id;
+    console.log(userId)
+
+    if (!userId || userId == undefined){
+      return res.json({message:"no user id provided"})
+    }
 
     const ratings = await prisma.rating.findMany({
-      where: { ratedUserId: parseInt(userId) },
+      where: { ratedUserId: userId },
       include: {
         rater: {
           select: {
@@ -165,12 +196,13 @@ export const getUserRatings = async (req: Request, res: Response) => {
       orderBy: { createdAt: 'desc' }
     });
 
+    console.log(ratings)
     const averageRating = ratings.length > 0
       ? ratings.reduce((sum, r) => sum + r.value, 0) / ratings.length
       : 0;
 
     res.json({
-      userId: parseInt(userId),
+      userId: userId,
       averageRating: parseFloat(averageRating.toFixed(2)),
       totalRatings: ratings.length,
       ratings

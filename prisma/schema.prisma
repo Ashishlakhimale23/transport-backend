@@ -59,6 +59,7 @@ model User {
   username                  String    @db.VarChar(25)
   role                      UserRole
   password                  String    @db.VarChar(100)
+  upiID                     String    @default("hellohello")
   contact                   String
   regularPracticeLocation   String
   vechileType               VehicleType[] @relation("UserVehicles")

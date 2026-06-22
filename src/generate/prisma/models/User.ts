@@ -40,6 +40,7 @@ export type UserMinAggregateOutputType = {
   username: string | null
   role: $Enums.UserRole | null
   password: string | null
+  upiID: string | null
   contact: string | null
   regularPracticeLocation: string | null
 }
@@ -50,6 +51,7 @@ export type UserMaxAggregateOutputType = {
   username: string | null
   role: $Enums.UserRole | null
   password: string | null
+  upiID: string | null
   contact: string | null
   regularPracticeLocation: string | null
 }
@@ -60,6 +62,7 @@ export type UserCountAggregateOutputType = {
   username: number
   role: number
   password: number
+  upiID: number
   contact: number
   regularPracticeLocation: number
   _all: number
@@ -80,6 +83,7 @@ export type UserMinAggregateInputType = {
   username?: true
   role?: true
   password?: true
+  upiID?: true
   contact?: true
   regularPracticeLocation?: true
 }
@@ -90,6 +94,7 @@ export type UserMaxAggregateInputType = {
   username?: true
   role?: true
   password?: true
+  upiID?: true
   contact?: true
   regularPracticeLocation?: true
 }
@@ -100,6 +105,7 @@ export type UserCountAggregateInputType = {
   username?: true
   role?: true
   password?: true
+  upiID?: true
   contact?: true
   regularPracticeLocation?: true
   _all?: true
@@ -197,6 +203,7 @@ export type UserGroupByOutputType = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID: string
   contact: string
   regularPracticeLocation: string
   _count: UserCountAggregateOutputType | null
@@ -230,6 +237,7 @@ export type UserWhereInput = {
   username?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   password?: Prisma.StringFilter<"User"> | string
+  upiID?: Prisma.StringFilter<"User"> | string
   contact?: Prisma.StringFilter<"User"> | string
   regularPracticeLocation?: Prisma.StringFilter<"User"> | string
   vechileType?: Prisma.VehicleTypeListRelationFilter
@@ -246,6 +254,7 @@ export type UserOrderByWithRelationInput = {
   username?: Prisma.SortOrder
   role?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  upiID?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
   vechileType?: Prisma.VehicleTypeOrderByRelationAggregateInput
@@ -265,6 +274,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   username?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   password?: Prisma.StringFilter<"User"> | string
+  upiID?: Prisma.StringFilter<"User"> | string
   contact?: Prisma.StringFilter<"User"> | string
   regularPracticeLocation?: Prisma.StringFilter<"User"> | string
   vechileType?: Prisma.VehicleTypeListRelationFilter
@@ -281,6 +291,7 @@ export type UserOrderByWithAggregationInput = {
   username?: Prisma.SortOrder
   role?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  upiID?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -299,6 +310,7 @@ export type UserScalarWhereWithAggregatesInput = {
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
+  upiID?: Prisma.StringWithAggregatesFilter<"User"> | string
   contact?: Prisma.StringWithAggregatesFilter<"User"> | string
   regularPracticeLocation?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
@@ -308,6 +320,7 @@ export type UserCreateInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
@@ -324,6 +337,7 @@ export type UserUncheckedCreateInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
@@ -339,6 +353,7 @@ export type UserUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
@@ -355,6 +370,7 @@ export type UserUncheckedUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
@@ -371,6 +387,7 @@ export type UserCreateManyInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
 }
@@ -380,6 +397,7 @@ export type UserUpdateManyMutationInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -390,6 +408,7 @@ export type UserUncheckedUpdateManyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -400,6 +419,7 @@ export type UserCountOrderByAggregateInput = {
   username?: Prisma.SortOrder
   role?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  upiID?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
 }
@@ -414,6 +434,7 @@ export type UserMaxOrderByAggregateInput = {
   username?: Prisma.SortOrder
   role?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  upiID?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
 }
@@ -424,6 +445,7 @@ export type UserMinOrderByAggregateInput = {
   username?: Prisma.SortOrder
   role?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  upiID?: Prisma.SortOrder
   contact?: Prisma.SortOrder
   regularPracticeLocation?: Prisma.SortOrder
 }
@@ -549,6 +571,7 @@ export type UserCreateWithoutContractsCreatedInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
@@ -564,6 +587,7 @@ export type UserUncheckedCreateWithoutContractsCreatedInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
@@ -583,6 +607,7 @@ export type UserCreateWithoutContractsCarriedInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
@@ -598,6 +623,7 @@ export type UserUncheckedCreateWithoutContractsCarriedInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
@@ -628,6 +654,7 @@ export type UserUpdateWithoutContractsCreatedInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
@@ -643,6 +670,7 @@ export type UserUncheckedUpdateWithoutContractsCreatedInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
@@ -668,6 +696,7 @@ export type UserUpdateWithoutContractsCarriedInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
@@ -683,6 +712,7 @@ export type UserUncheckedUpdateWithoutContractsCarriedInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
@@ -697,6 +727,7 @@ export type UserCreateWithoutBidsInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
@@ -712,6 +743,7 @@ export type UserUncheckedCreateWithoutBidsInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
@@ -742,6 +774,7 @@ export type UserUpdateWithoutBidsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
@@ -757,6 +790,7 @@ export type UserUncheckedUpdateWithoutBidsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
@@ -771,6 +805,7 @@ export type UserCreateWithoutVechileTypeInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   contractsCreated?: Prisma.ContractCreateNestedManyWithoutContractorInput
@@ -786,6 +821,7 @@ export type UserUncheckedCreateWithoutVechileTypeInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   contractsCreated?: Prisma.ContractUncheckedCreateNestedManyWithoutContractorInput
@@ -816,6 +852,7 @@ export type UserUpdateWithoutVechileTypeInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   contractsCreated?: Prisma.ContractUpdateManyWithoutContractorNestedInput
@@ -831,6 +868,7 @@ export type UserUncheckedUpdateWithoutVechileTypeInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   contractsCreated?: Prisma.ContractUncheckedUpdateManyWithoutContractorNestedInput
@@ -845,6 +883,7 @@ export type UserCreateWithoutGivenRatingsInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
@@ -860,6 +899,7 @@ export type UserUncheckedCreateWithoutGivenRatingsInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
@@ -879,6 +919,7 @@ export type UserCreateWithoutReceivedRatingsInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeCreateNestedManyWithoutDriverInput
@@ -894,6 +935,7 @@ export type UserUncheckedCreateWithoutReceivedRatingsInput = {
   username: string
   role: $Enums.UserRole
   password: string
+  upiID?: string
   contact: string
   regularPracticeLocation: string
   vechileType?: Prisma.VehicleTypeUncheckedCreateNestedManyWithoutDriverInput
@@ -924,6 +966,7 @@ export type UserUpdateWithoutGivenRatingsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
@@ -939,6 +982,7 @@ export type UserUncheckedUpdateWithoutGivenRatingsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
@@ -964,6 +1008,7 @@ export type UserUpdateWithoutReceivedRatingsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUpdateManyWithoutDriverNestedInput
@@ -979,6 +1024,7 @@ export type UserUncheckedUpdateWithoutReceivedRatingsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  upiID?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.StringFieldUpdateOperationsInput | string
   regularPracticeLocation?: Prisma.StringFieldUpdateOperationsInput | string
   vechileType?: Prisma.VehicleTypeUncheckedUpdateManyWithoutDriverNestedInput
@@ -1070,6 +1116,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   username?: boolean
   role?: boolean
   password?: boolean
+  upiID?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
   vechileType?: boolean | Prisma.User$vechileTypeArgs<ExtArgs>
@@ -1087,6 +1134,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   username?: boolean
   role?: boolean
   password?: boolean
+  upiID?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
 }, ExtArgs["result"]["user"]>
@@ -1097,6 +1145,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   username?: boolean
   role?: boolean
   password?: boolean
+  upiID?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
 }, ExtArgs["result"]["user"]>
@@ -1107,11 +1156,12 @@ export type UserSelectScalar = {
   username?: boolean
   role?: boolean
   password?: boolean
+  upiID?: boolean
   contact?: boolean
   regularPracticeLocation?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "role" | "password" | "contact" | "regularPracticeLocation", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "role" | "password" | "upiID" | "contact" | "regularPracticeLocation", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vechileType?: boolean | Prisma.User$vechileTypeArgs<ExtArgs>
   contractsCreated?: boolean | Prisma.User$contractsCreatedArgs<ExtArgs>
@@ -1140,6 +1190,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     username: string
     role: $Enums.UserRole
     password: string
+    upiID: string
     contact: string
     regularPracticeLocation: string
   }, ExtArgs["result"]["user"]>
@@ -1576,6 +1627,7 @@ export interface UserFieldRefs {
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'UserRole'>
   readonly password: Prisma.FieldRef<"User", 'String'>
+  readonly upiID: Prisma.FieldRef<"User", 'String'>
   readonly contact: Prisma.FieldRef<"User", 'String'>
   readonly regularPracticeLocation: Prisma.FieldRef<"User", 'String'>
 }
