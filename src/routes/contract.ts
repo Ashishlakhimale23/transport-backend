@@ -30,8 +30,7 @@ router.post(
     body('typeOfVehicle').isIn(['V4', 'V6', 'V10', 'V12']),
     body('insured').isBoolean(),
     body('type').isString().notEmpty(),
-body('description').isString().notEmpty(),
-    validate
+    body('description').isString().notEmpty(),
   ],
   createContract
 );
