@@ -29,8 +29,8 @@ router.post(
     body('approxKms').isInt({ min: 0 }),
     body('typeOfVehicle').isIn(['V4', 'V6', 'V10', 'V12']),
     body('insured').isBoolean(),
-    body('type'),
-    body('description'),
+    body('type').isString().notEmpty(),
+body('description').isString().notEmpty(),
     validate
   ],
   createContract
