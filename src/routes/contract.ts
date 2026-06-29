@@ -29,7 +29,7 @@ router.post(
     body('approxKms').isInt({ min: 0 }),
     body('typeOfVehicle').isIn(['V4', 'V6', 'V10', 'V12']),
     body('insured').isBoolean(),
-    body('type').isIn(['HANDLE_WITH_CARE', 'AUTOMOBILE']),
+    body('type'),
     body('description'),
     validate
   ],
@@ -42,7 +42,7 @@ router.get(
   [
     query('status').optional().isIn(['open', 'assigned']),
     query('typeOfVehicle').optional().isIn(['V4', 'V6', 'V10', 'V12']),
-    query('type').optional().isIn(['HANDLE_WITH_CARE', 'AUTOMOBILE']),
+    query('type'),
     validate
   ],
   getAllContracts
@@ -64,7 +64,7 @@ router.put(
     body('endLocation').optional().notEmpty(),
     body('approxKms').optional().isInt({ min: 0 }),
     body('typeOfVehicle').optional().isIn(['V4', 'V6', 'V10', 'V12']),
-    body('type').optional().isIn(['HANDLE_WITH_CARE', 'AUTOMOBILE']),
+    body('type'),
     validate
   ],
   updateContract

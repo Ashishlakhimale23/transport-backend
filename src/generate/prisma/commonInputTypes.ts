@@ -136,13 +136,6 @@ export type BoolFilter<$PrismaModel = never> = {
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
-export type EnumGoodsTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.GoodsType | Prisma.EnumGoodsTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumGoodsTypeFilter<$PrismaModel> | $Enums.GoodsType
-}
-
 export type EnumDeliveryStatusNullableFilter<$PrismaModel = never> = {
   equals?: $Enums.DeliveryStatus | Prisma.EnumDeliveryStatusFieldRefInput<$PrismaModel> | null
   in?: $Enums.DeliveryStatus[] | Prisma.ListEnumDeliveryStatusFieldRefInput<$PrismaModel> | null
@@ -243,16 +236,6 @@ export type BoolWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedBoolFilter<$PrismaModel>
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
-}
-
-export type EnumGoodsTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.GoodsType | Prisma.EnumGoodsTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumGoodsTypeWithAggregatesFilter<$PrismaModel> | $Enums.GoodsType
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumGoodsTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumGoodsTypeFilter<$PrismaModel>
 }
 
 export type EnumDeliveryStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -434,13 +417,6 @@ export type NestedBoolFilter<$PrismaModel = never> = {
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
-export type NestedEnumGoodsTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.GoodsType | Prisma.EnumGoodsTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumGoodsTypeFilter<$PrismaModel> | $Enums.GoodsType
-}
-
 export type NestedEnumDeliveryStatusNullableFilter<$PrismaModel = never> = {
   equals?: $Enums.DeliveryStatus | Prisma.EnumDeliveryStatusFieldRefInput<$PrismaModel> | null
   in?: $Enums.DeliveryStatus[] | Prisma.ListEnumDeliveryStatusFieldRefInput<$PrismaModel> | null
@@ -546,16 +522,6 @@ export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedBoolFilter<$PrismaModel>
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
-}
-
-export type NestedEnumGoodsTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.GoodsType | Prisma.EnumGoodsTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.GoodsType[] | Prisma.ListEnumGoodsTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumGoodsTypeWithAggregatesFilter<$PrismaModel> | $Enums.GoodsType
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumGoodsTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumGoodsTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumDeliveryStatusNullableWithAggregatesFilter<$PrismaModel = never> = {

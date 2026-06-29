@@ -8,6 +8,7 @@ import bidRoutes from './routes/bid';
 import vehicleRoutes from './routes/vechile';
 import userRoutes from './routes/user';
 import { errorHandler } from './middleware/error';
+import router from './routes/rating';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/api/contracts', contractRoutes);
 app.use('/api/bids', bidRoutes);
 app.use('/api/vehicles', vehicleRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/rating',router)
 
 app.use(errorHandler);
 

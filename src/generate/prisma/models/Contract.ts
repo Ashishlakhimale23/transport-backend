@@ -57,7 +57,7 @@ export type ContractMinAggregateOutputType = {
   typeOfVehicle: $Enums.VehicleWheel | null
   insured: boolean | null
   winningPrice: number | null
-  type: $Enums.GoodsType | null
+  type: string | null
   createdAt: Date | null
   description: string | null
   deliveryStatus: $Enums.DeliveryStatus | null
@@ -78,7 +78,7 @@ export type ContractMaxAggregateOutputType = {
   typeOfVehicle: $Enums.VehicleWheel | null
   insured: boolean | null
   winningPrice: number | null
-  type: $Enums.GoodsType | null
+  type: string | null
   createdAt: Date | null
   description: string | null
   deliveryStatus: $Enums.DeliveryStatus | null
@@ -292,7 +292,7 @@ export type ContractGroupByOutputType = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt: Date
   description: string
   requirements: string[]
@@ -337,7 +337,7 @@ export type ContractWhereInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFilter<"Contract"> | $Enums.VehicleWheel
   insured?: Prisma.BoolFilter<"Contract"> | boolean
   winningPrice?: Prisma.IntNullableFilter<"Contract"> | number | null
-  type?: Prisma.EnumGoodsTypeFilter<"Contract"> | $Enums.GoodsType
+  type?: Prisma.StringFilter<"Contract"> | string
   createdAt?: Prisma.DateTimeFilter<"Contract"> | Date | string
   description?: Prisma.StringFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
@@ -392,7 +392,7 @@ export type ContractWhereUniqueInput = Prisma.AtLeast<{
   typeOfVehicle?: Prisma.EnumVehicleWheelFilter<"Contract"> | $Enums.VehicleWheel
   insured?: Prisma.BoolFilter<"Contract"> | boolean
   winningPrice?: Prisma.IntNullableFilter<"Contract"> | number | null
-  type?: Prisma.EnumGoodsTypeFilter<"Contract"> | $Enums.GoodsType
+  type?: Prisma.StringFilter<"Contract"> | string
   createdAt?: Prisma.DateTimeFilter<"Contract"> | Date | string
   description?: Prisma.StringFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
@@ -448,7 +448,7 @@ export type ContractScalarWhereWithAggregatesInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelWithAggregatesFilter<"Contract"> | $Enums.VehicleWheel
   insured?: Prisma.BoolWithAggregatesFilter<"Contract"> | boolean
   winningPrice?: Prisma.IntNullableWithAggregatesFilter<"Contract"> | number | null
-  type?: Prisma.EnumGoodsTypeWithAggregatesFilter<"Contract"> | $Enums.GoodsType
+  type?: Prisma.StringWithAggregatesFilter<"Contract"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Contract"> | Date | string
   description?: Prisma.StringWithAggregatesFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
@@ -467,7 +467,7 @@ export type ContractCreateInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -493,7 +493,7 @@ export type ContractUncheckedCreateInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -514,7 +514,7 @@ export type ContractUpdateInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -540,7 +540,7 @@ export type ContractUncheckedUpdateInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -564,7 +564,7 @@ export type ContractCreateManyInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -583,7 +583,7 @@ export type ContractUpdateManyMutationInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -605,7 +605,7 @@ export type ContractUncheckedUpdateManyInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -835,10 +835,6 @@ export type NullableIntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type EnumGoodsTypeFieldUpdateOperationsInput = {
-  set?: $Enums.GoodsType
-}
-
 export type ContractUpdaterequirementsInput = {
   set?: string[]
   push?: string | string[]
@@ -894,7 +890,7 @@ export type ContractCreateWithoutContractorInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -918,7 +914,7 @@ export type ContractUncheckedCreateWithoutContractorInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -949,7 +945,7 @@ export type ContractCreateWithoutGoodsCarrierInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -973,7 +969,7 @@ export type ContractUncheckedCreateWithoutGoodsCarrierInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -1026,7 +1022,7 @@ export type ContractScalarWhereInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFilter<"Contract"> | $Enums.VehicleWheel
   insured?: Prisma.BoolFilter<"Contract"> | boolean
   winningPrice?: Prisma.IntNullableFilter<"Contract"> | number | null
-  type?: Prisma.EnumGoodsTypeFilter<"Contract"> | $Enums.GoodsType
+  type?: Prisma.StringFilter<"Contract"> | string
   createdAt?: Prisma.DateTimeFilter<"Contract"> | Date | string
   description?: Prisma.StringFilter<"Contract"> | string
   requirements?: Prisma.StringNullableListFilter<"Contract">
@@ -1061,7 +1057,7 @@ export type ContractCreateWithoutBidsInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -1086,7 +1082,7 @@ export type ContractUncheckedCreateWithoutBidsInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -1122,7 +1118,7 @@ export type ContractUpdateWithoutBidsInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1147,7 +1143,7 @@ export type ContractUncheckedUpdateWithoutBidsInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1167,7 +1163,7 @@ export type ContractCreateWithoutRatingsInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -1192,7 +1188,7 @@ export type ContractUncheckedCreateWithoutRatingsInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -1228,7 +1224,7 @@ export type ContractUpdateWithoutRatingsInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1253,7 +1249,7 @@ export type ContractUncheckedUpdateWithoutRatingsInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1275,7 +1271,7 @@ export type ContractCreateManyContractorInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -1296,7 +1292,7 @@ export type ContractCreateManyGoodsCarrierInput = {
   typeOfVehicle: $Enums.VehicleWheel
   insured: boolean
   winningPrice?: number | null
-  type: $Enums.GoodsType
+  type: string
   createdAt?: Date | string
   description?: string
   requirements?: Prisma.ContractCreaterequirementsInput | string[]
@@ -1315,7 +1311,7 @@ export type ContractUpdateWithoutContractorInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1339,7 +1335,7 @@ export type ContractUncheckedUpdateWithoutContractorInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1362,7 +1358,7 @@ export type ContractUncheckedUpdateManyWithoutContractorInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1381,7 +1377,7 @@ export type ContractUpdateWithoutGoodsCarrierInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1405,7 +1401,7 @@ export type ContractUncheckedUpdateWithoutGoodsCarrierInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1428,7 +1424,7 @@ export type ContractUncheckedUpdateManyWithoutGoodsCarrierInput = {
   typeOfVehicle?: Prisma.EnumVehicleWheelFieldUpdateOperationsInput | $Enums.VehicleWheel
   insured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   winningPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  type?: Prisma.EnumGoodsTypeFieldUpdateOperationsInput | $Enums.GoodsType
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   requirements?: Prisma.ContractUpdaterequirementsInput | string[]
@@ -1612,7 +1608,7 @@ export type $ContractPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     typeOfVehicle: $Enums.VehicleWheel
     insured: boolean
     winningPrice: number | null
-    type: $Enums.GoodsType
+    type: string
     createdAt: Date
     description: string
     requirements: string[]
@@ -2058,7 +2054,7 @@ export interface ContractFieldRefs {
   readonly typeOfVehicle: Prisma.FieldRef<"Contract", 'VehicleWheel'>
   readonly insured: Prisma.FieldRef<"Contract", 'Boolean'>
   readonly winningPrice: Prisma.FieldRef<"Contract", 'Int'>
-  readonly type: Prisma.FieldRef<"Contract", 'GoodsType'>
+  readonly type: Prisma.FieldRef<"Contract", 'String'>
   readonly createdAt: Prisma.FieldRef<"Contract", 'DateTime'>
   readonly description: Prisma.FieldRef<"Contract", 'String'>
   readonly requirements: Prisma.FieldRef<"Contract", 'String[]'>
