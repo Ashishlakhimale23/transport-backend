@@ -13,7 +13,7 @@ import router from './routes/rating';
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: "*"}));
+app.use(cors({ origin: ["*","http://localhost:8080"]}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
