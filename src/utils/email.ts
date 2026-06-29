@@ -25,7 +25,7 @@ interface EmailOptions {
 export const sendEmail = async (options: EmailOptions) => {
   try {
     const mailOptions = {
-      from: 'BulkWay <noreply@hellooworld.xyz>',
+      from: 'BulkWay <noreply@surajweb.in>',
       to: options.to,
       subject: options.subject,
       html: options.html,

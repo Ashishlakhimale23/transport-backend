@@ -49,7 +49,7 @@ router.post(
   submitRating
 );
 
-router.get('/ratings', authenticate, getUserRatings);
+router.get('/user/ratings', authenticate, getUserRatings);
 
 router.delete('/:id', authenticate, authorize(UserRole.ADMIN), deleteUser);
 
